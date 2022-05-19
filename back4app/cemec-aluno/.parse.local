@@ -1,0 +1,10 @@
+{
+  "applications": {
+    "_default": {
+      "link": "cemec-aluno"
+    },
+    "cemec-aluno": {
+      "applicationId": "ZuF4FI4dZUN4i9ObIoK6LvTuoIuVFNsVAMRjYNkX"
+    }
+  }
+}
