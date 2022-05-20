@@ -9,6 +9,7 @@ A new Flutter project.
 # deploy
 
 cd ~/myapp/cemec.net.br/aluno && flutter build web && cd back4app/cemec-aluno && b4a deploy
+
 # Login
 Campos obrigatorio
 1. Email

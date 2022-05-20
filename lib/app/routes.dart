@@ -6,6 +6,7 @@ import 'package:aluno/app/presentation/views/auth/login/auth_login_page.dart';
 import 'package:aluno/app/presentation/views/auth/register/email/auth_register_email.page.dart';
 import 'package:aluno/app/presentation/views/auth/splash/splash_page.dart';
 import 'package:aluno/app/presentation/views/home/home_page.dart';
+import 'package:aluno/app/presentation/views/pay/pix/pay_pix_page.dart';
 import 'package:get/get.dart';
 
 class Routes {
@@ -15,6 +16,8 @@ class Routes {
   static const authRegisterEmail = '/auth/register/email';
 
   static const home = '/home';
+
+  static const payPix = '/pay/pix';
 
   static final pageList = [
     GetPage(
@@ -36,6 +39,11 @@ class Routes {
       name: Routes.home,
       binding: HomeDependencies(),
       page: () => HomePage(),
+    ),
+    GetPage(
+      name: Routes.payPix,
+      // binding: HomeDependencies(),
+      page: () => PayPixPage(),
     ),
   ];
 }

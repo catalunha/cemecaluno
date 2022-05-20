@@ -21,7 +21,8 @@ class App extends StatelessWidget {
       ],
       initialBinding: SplashDependencies(),
       getPages: Routes.pageList,
-      initialRoute: Routes.splash,
+      // initialRoute: Routes.splash,
+      initialRoute: Routes.home,
     );
   }
 }
