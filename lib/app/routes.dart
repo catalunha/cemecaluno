@@ -5,8 +5,10 @@ import 'package:aluno/app/presentation/controllers/home/home_dependencies.dart';
 import 'package:aluno/app/presentation/views/auth/login/auth_login_page.dart';
 import 'package:aluno/app/presentation/views/auth/register/email/auth_register_email.page.dart';
 import 'package:aluno/app/presentation/views/auth/splash/splash_page.dart';
+import 'package:aluno/app/presentation/views/course/course_page.dart';
 import 'package:aluno/app/presentation/views/home/home_page.dart';
-import 'package:aluno/app/presentation/views/pay/pix/pay_pix_page.dart';
+import 'package:aluno/app/presentation/views/purchase/cart/purchase_cart.dart';
+import 'package:aluno/app/presentation/views/purchase/order/purchase_order.dart';
 import 'package:get/get.dart';
 
 class Routes {
@@ -17,7 +19,10 @@ class Routes {
 
   static const home = '/home';
 
-  static const payPix = '/pay/pix';
+  static const purchaseCart = '/purchase/cart';
+  static const purchaseOrder = '/purchase/order';
+
+  static const course = '/course';
 
   static final pageList = [
     GetPage(
@@ -41,9 +46,19 @@ class Routes {
       page: () => HomePage(),
     ),
     GetPage(
-      name: Routes.payPix,
+      name: Routes.purchaseCart,
       // binding: HomeDependencies(),
-      page: () => PayPixPage(),
+      page: () => PurchaseCart(),
+    ),
+    GetPage(
+      name: Routes.purchaseOrder,
+      // binding: HomeDependencies(),
+      page: () => const PurchaseOrder(),
+    ),
+    GetPage(
+      name: Routes.course,
+      // binding: HomeDependencies(),
+      page: () => const CoursePage(),
     ),
   ];
 }

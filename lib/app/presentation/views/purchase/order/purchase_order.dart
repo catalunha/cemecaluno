@@ -1,48 +1,27 @@
-import 'package:aluno/app/presentation/views/utils/app_clipboard_helper.dart';
+import 'package:aluno/app/presentation/views/utils/app_appbar.dart';
 import 'package:aluno/app/presentation/views/utils/app_launch.dart';
-import 'package:aluno/app/presentation/views/utils/app_number_formfield.dart';
-import 'package:aluno/app/presentation/views/utils/app_textformfield.dart';
+import 'package:aluno/app/presentation/views/utils/linear_progress_indicator.dart';
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
-import 'package:validatorless/validatorless.dart';
 
-class PayPixPage extends StatefulWidget {
-  String tipoPay = Get.arguments;
-  PayPixPage({Key? key}) : super(key: key);
+class PurchaseOrder extends StatefulWidget {
+  const PurchaseOrder({Key? key}) : super(key: key);
 
   @override
-  State<PayPixPage> createState() => _PayPixPageState();
+  State<PurchaseOrder> createState() => _PurchaseOrderState();
 }
 
-class _PayPixPageState extends State<PayPixPage> {
-  final _formKey = GlobalKey<FormState>();
-  final _nameCardTEC = TextEditingController();
-  final _numberCardTEC = TextEditingController();
-  final _yearValidCardTEC = TextEditingController();
-  final _monthValidCardTEC = TextEditingController();
-  final _codeCardTEC = TextEditingController();
-  @override
-  void initState() {
-    // TODO: implement initState
-    super.initState();
-    _nameCardTEC.text = "";
-    _numberCardTEC.text = "";
-    _yearValidCardTEC.text = "";
-    _monthValidCardTEC.text = "";
-    _codeCardTEC.text = "";
-    print(widget.tipoPay);
-  }
-
+class _PurchaseOrderState extends State<PurchaseOrder> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('Seu carrinho'),
+      appBar: AppAppbar(
+        title: const Text('Seus cursos'),
       ),
-      body: ListView(children: [
-        if (widget.tipoPay == 'pix')
+      body: ListView(
+        children: [
           cursoPagtoPix(
-            name: 'nomeCurso04 (Pagar com PIX)',
+            name: 'nomeCurso07',
+            turma: '2022',
             imageCourse:
                 'https://parsefiles.back4app.com/ZuF4FI4dZUN4i9ObIoK6LvTuoIuVFNsVAMRjYNkX/02f4d2918c8b90cce0578b4838c00cfd_auriculo.jpg',
             imageCoord:
@@ -50,39 +29,22 @@ class _PayPixPageState extends State<PayPixPage> {
             imageProf:
                 'https://parsefiles.back4app.com/ZuF4FI4dZUN4i9ObIoK6LvTuoIuVFNsVAMRjYNkX/01fc68c2af7ade93ce5955afe9cabfbf_man1.png',
           ),
-        if (widget.tipoPay == 'bankslip')
-          cursoPagtoBankslip(
-            name: 'nomeCurso05 (Pagar com Boleto)',
-            imageCourse:
-                'https://parsefiles.back4app.com/ZuF4FI4dZUN4i9ObIoK6LvTuoIuVFNsVAMRjYNkX/02f4d2918c8b90cce0578b4838c00cfd_auriculo.jpg',
-            imageCoord:
-                'https://parsefiles.back4app.com/ZuF4FI4dZUN4i9ObIoK6LvTuoIuVFNsVAMRjYNkX/01fc68c2af7ade93ce5955afe9cabfbf_man1.png',
-            imageProf:
-                'https://parsefiles.back4app.com/ZuF4FI4dZUN4i9ObIoK6LvTuoIuVFNsVAMRjYNkX/01fc68c2af7ade93ce5955afe9cabfbf_man1.png',
-          ),
-        if (widget.tipoPay == 'card')
-          cursoPagtoCard(
-            name: 'nomeCurso06 (Pagar com Cartão)',
-            imageCourse:
-                'https://parsefiles.back4app.com/ZuF4FI4dZUN4i9ObIoK6LvTuoIuVFNsVAMRjYNkX/02f4d2918c8b90cce0578b4838c00cfd_auriculo.jpg',
-            imageCoord:
-                'https://parsefiles.back4app.com/ZuF4FI4dZUN4i9ObIoK6LvTuoIuVFNsVAMRjYNkX/01fc68c2af7ade93ce5955afe9cabfbf_man1.png',
-            imageProf:
-                'https://parsefiles.back4app.com/ZuF4FI4dZUN4i9ObIoK6LvTuoIuVFNsVAMRjYNkX/01fc68c2af7ade93ce5955afe9cabfbf_man1.png',
-          )
-      ]),
+        ],
+      ),
     );
   }
 
-  Card cursoPagtoPix(
-      {required String name,
-      required String imageCourse,
-      required String imageCoord,
-      required String imageProf}) {
+  Card cursoPagtoPix({
+    required String name,
+    required String turma,
+    required String imageCourse,
+    required String imageCoord,
+    required String imageProf,
+  }) {
     return Card(
       child: Column(
         // mainAxisSize: MainAxisSize.min,
-        crossAxisAlignment: CrossAxisAlignment.center,
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Row(
             mainAxisSize: MainAxisSize.min,
@@ -115,14 +77,10 @@ class _PayPixPageState extends State<PayPixPage> {
                       name,
                       style: const TextStyle(fontWeight: FontWeight.bold),
                     ),
-                    const Text(
-                      'Incrições até: 10-06-2022 as 23:59',
-                      style: TextStyle(
-                          fontWeight: FontWeight.bold, color: Colors.red),
+                    Text(
+                      turma,
+                      style: const TextStyle(fontWeight: FontWeight.bold),
                     ),
-                    // const Text(
-                    //   'É um curso bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla ',
-                    // ),
                     const SizedBox(
                       height: 5,
                     ),
@@ -136,10 +94,28 @@ class _PayPixPageState extends State<PayPixPage> {
                               mainAxisSize: MainAxisSize.max,
                               mainAxisAlignment: MainAxisAlignment.start,
                               children: [
+                                InkWell(
+                                  onTap: () =>
+                                      AppLaunch.launch('https://discord.com'),
+                                  child: const Icon(
+                                    Icons.discord,
+                                    size: 40,
+                                    color: Colors.blue,
+                                  ),
+                                ),
                                 Tooltip(
                                   message: 'Coord.: nomeCoordenador(a)',
                                   child: Image.network(
                                     imageCoord,
+                                    width: 50,
+                                    height: 50,
+                                    fit: BoxFit.cover,
+                                  ),
+                                ),
+                                Tooltip(
+                                  message: 'Prof(a).: nomeProfessora',
+                                  child: Image.network(
+                                    imageProf,
                                     width: 50,
                                     height: 50,
                                     fit: BoxFit.cover,
@@ -202,54 +178,19 @@ class _PayPixPageState extends State<PayPixPage> {
               )
             ],
           ),
-          Container(
-            color: Colors.green,
-            padding: const EdgeInsets.all(5),
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: const [
-                Text(
-                  'INVESTIMENTO NO CURSO R\$ 100,00',
-                  style: TextStyle(fontWeight: FontWeight.bold),
-                ),
-                Text('Valor pago a vista no PIX')
-              ],
-            ),
-          ),
+          const Text('Pedido feito em: 10-06-2022 as 16:34'),
+          const Text('Investimento no Curso: R\$ 100.00'),
+          const Text('Modalidade de pagamento: PIX'),
+          const Text('Opção: 1x'),
+          const Text('Pagamento realizado em: 10-06-2022 as 16:34'),
+          const Text('Código da transação: f2342fsdffw342rweasds343ssd'),
           Row(
-            mainAxisAlignment: MainAxisAlignment.center,
             children: const [
-              Text('Segue dados para pagamento com PIX'),
+              Text('Progresso nos estudos:'),
+              SizedBox(width: 5),
+              LinearPercentIndicator(percent: 0.213),
             ],
-          ),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            // crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
-              Image.network(
-                'https://parsefiles.back4app.com/ZuF4FI4dZUN4i9ObIoK6LvTuoIuVFNsVAMRjYNkX/dbe7664facb9318f5dd93b8db7c45a7b_qrcode.png',
-                width: 75,
-                height: 75,
-                fit: BoxFit.cover,
-              ),
-              Column(
-                children: [
-                  const Text('Pix Copia e Cola'),
-                  InkWell(
-                      onTap: () {
-                        AppClipboardHelper.copy('codigo do pix');
-                        Get.snackbar(
-                          'PIX copiado',
-                          'Cole no aplicativo de seu banco',
-                          backgroundColor: Colors.yellowAccent,
-                          margin: const EdgeInsets.all(10),
-                        );
-                      },
-                      child: const Text('Click aqui')),
-                ],
-              )
-            ],
-          ),
+          )
         ],
       ),
     );
@@ -398,31 +339,6 @@ class _PayPixPageState extends State<PayPixPage> {
               ],
             ),
           ),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: const [
-              Text('Segue dados para pagamento com Boleto'),
-            ],
-          ),
-          Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
-              Image.network(
-                'https://parsefiles.back4app.com/ZuF4FI4dZUN4i9ObIoK6LvTuoIuVFNsVAMRjYNkX/fbeae4ba125a7417f7decb33570a6d3c_barcode.png',
-                // width: 375,
-                // height: 25,
-                width: double.infinity,
-                // fit: BoxFit.cover,
-              ),
-              InkWell(
-                  onTap: () {
-                    AppLaunch.launch(
-                        'https: //parsefiles.back4app.com/ZuF4FI4dZUN4i9ObIoK6LvTuoIuVFNsVAMRjYNkX/0bbca0962858fdc6faeac20ca7c34782_boleto.pdf');
-                  },
-                  child: const Text('Baixa boleto. Click aqui.'))
-            ],
-          ),
         ],
       ),
     );
@@ -562,99 +478,11 @@ class _PayPixPageState extends State<PayPixPage> {
             // height: 25,
             color: Colors.green,
             padding: const EdgeInsets.all(5),
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: const [
-                Text(
-                  'INVESTIMENTO NO CURSO R\$ 100,00',
-                  style: TextStyle(fontWeight: FontWeight.bold),
-                ),
-                // Text(
-                //   'Valor pago a vista no cartão',
-                // ),
-                Text(
-                  'Valor pago em 3 vezes de R\$33,00 no cartão',
-                )
-              ],
+            child: const Text(
+              'INVESTIMENTO NO CURSO R\$ 100,00',
+              style: TextStyle(fontWeight: FontWeight.bold),
             ),
           ),
-          Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: const [
-              Text('Informe dados para pagamento com cartão'),
-              Text('(nenhuma informação será salva no aplicativo)'),
-              Text('(informação criptogravada de ponta-a-ponta)'),
-            ],
-          ),
-          Form(
-            key: _formKey,
-            child: Container(
-              margin: const EdgeInsets.symmetric(horizontal: 10),
-              // width: 300,
-              child: Column(
-                children: [
-                  AppTextFormField(
-                    label: 'Nome igual ao cartão',
-                    controller: _nameCardTEC,
-                    validator: Validatorless.required('Nome é obrigatório'),
-                  ),
-                  AppNumberFormField(
-                    label: 'Numero do cartão',
-                    controller: _numberCardTEC,
-                    validator: Validatorless.multiple([
-                      Validatorless.required('Nome é obrigatório'),
-                      Validatorless.number('Valor deve ser número'),
-                    ]),
-                  ),
-                  Row(
-                    // mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Expanded(
-                        flex: 1,
-                        child: AppNumberFormField(
-                          label: 'Ano de validade',
-                          controller: _yearValidCardTEC,
-                          validator: Validatorless.multiple([
-                            Validatorless.required('Ano é obrigatório'),
-                            Validatorless.number('Valor deve ser número'),
-                            Validatorless.min(2020, 'Ano mínimo é 2020'),
-                            Validatorless.max(2023, 'Ano máximo é 2023'),
-                          ]),
-                        ),
-                      ),
-                      Expanded(
-                        flex: 1,
-                        child: AppNumberFormField(
-                          label: 'Mês de validade',
-                          controller: _monthValidCardTEC,
-                          validator: Validatorless.multiple([
-                            Validatorless.required('Mês é obrigatório'),
-                            Validatorless.number('Mês deve ser número'),
-                            Validatorless.min(1, 'Mês mínimo é 1'),
-                            Validatorless.max(1, 'Mês máximo é 12'),
-                          ]),
-                        ),
-                      ),
-                      Expanded(
-                        flex: 1,
-                        child: AppNumberFormField(
-                          label: 'Código verso',
-                          controller: _codeCardTEC,
-                          validator: Validatorless.multiple([
-                            Validatorless.required('Código é obrigatório'),
-                            Validatorless.number('Código deve ser número'),
-                          ]),
-                        ),
-                      ),
-                    ],
-                  ),
-                ],
-              ),
-            ),
-          ),
-          ElevatedButton(
-              onPressed: () {}, child: const Text('Enviar dados para análise.'))
         ],
       ),
     );
