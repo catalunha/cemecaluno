@@ -1,4 +1,5 @@
-import 'package:aluno/app/presentation/views/home/part/organizer_perfil.dart';
+import 'package:aluno/app/presentation/views/home/part/course_icon.dart';
+import 'package:aluno/app/presentation/views/home/part/course_sale.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -65,7 +66,7 @@ class _HomePageState extends State<HomePage> {
                         imageCourse:
                             'https://parsefiles.back4app.com/ZuF4FI4dZUN4i9ObIoK6LvTuoIuVFNsVAMRjYNkX/cdec4477b1e99e9b98fb45f8be00ac1b_ventosa.jpg',
                         imageCoord:
-                            'https://parsefiles.back4app.com/ZuF4FI4dZUN4i9ObIoK6LvTuoIuVFNsVAMRjYNkX/1ff7d0e5a37032c8fd882be43f8f2388_woman4.png',
+                            'https://parsefiles.back4app.com/ZuF4FI4dZUN4i9ObIoK6LvTuoIuVFNsVAMRjYNkX/297bf3dcf5dc829d9e1933db26fd4cf6_izatar.jpg',
                         imageProf:
                             'https://parsefiles.back4app.com/ZuF4FI4dZUN4i9ObIoK6LvTuoIuVFNsVAMRjYNkX/be018b06eab0a32da738b15672979fc0_woman5.png',
                       ),
@@ -78,7 +79,7 @@ class _HomePageState extends State<HomePage> {
                         imageCourse:
                             'https://parsefiles.back4app.com/ZuF4FI4dZUN4i9ObIoK6LvTuoIuVFNsVAMRjYNkX/cdec4477b1e99e9b98fb45f8be00ac1b_ventosa.jpg',
                         imageCoord:
-                            'https://parsefiles.back4app.com/ZuF4FI4dZUN4i9ObIoK6LvTuoIuVFNsVAMRjYNkX/1ff7d0e5a37032c8fd882be43f8f2388_woman4.png',
+                            'https://parsefiles.back4app.com/ZuF4FI4dZUN4i9ObIoK6LvTuoIuVFNsVAMRjYNkX/297bf3dcf5dc829d9e1933db26fd4cf6_izatar.jpg',
                         imageProf:
                             'https://parsefiles.back4app.com/ZuF4FI4dZUN4i9ObIoK6LvTuoIuVFNsVAMRjYNkX/be018b06eab0a32da738b15672979fc0_woman5.png',
                       ),
@@ -301,24 +302,10 @@ class _HomePageState extends State<HomePage> {
             style: const TextStyle(fontWeight: FontWeight.bold),
           ),
           InkWell(
-            onTap: () {
-              Get.toNamed(Routes.course);
-            },
-            child: ClipRRect(
-              borderRadius: const BorderRadius.only(
-                bottomLeft: Radius.circular(0),
-                bottomRight: Radius.circular(30),
-                topLeft: Radius.circular(30),
-                topRight: Radius.circular(0),
-              ),
-              child: Image.network(
-                imageCourse,
-                width: 70,
-                height: 70,
-                fit: BoxFit.contain,
-              ),
-            ),
-          ),
+              onTap: () {
+                Get.toNamed(Routes.course);
+              },
+              child: CourseIcon(imageCourse: imageCourse)),
           Row(
             mainAxisSize: MainAxisSize.max,
             mainAxisAlignment: MainAxisAlignment.center,
@@ -373,172 +360,6 @@ class _HomePageState extends State<HomePage> {
           ),
           const LinearPercentIndicator(percent: 0.213),
         ],
-      ),
-    );
-  }
-}
-
-class CourseSale extends StatelessWidget {
-  final String imageCourse;
-  final String name;
-  final String turma;
-  final String imageCoord;
-  final String imageProf;
-
-  const CourseSale({
-    Key? key,
-    required this.imageCourse,
-    required this.name,
-    required this.turma,
-    required this.imageCoord,
-    required this.imageProf,
-  }) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Row(
-      mainAxisSize: MainAxisSize.min,
-      crossAxisAlignment: CrossAxisAlignment.center,
-      children: [
-        CourseIcon(imageCourse: imageCourse),
-        const SizedBox(
-          width: 10,
-        ),
-        Expanded(
-          child: Column(
-            mainAxisSize: MainAxisSize.min,
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Text(
-                name,
-                style: const TextStyle(fontWeight: FontWeight.bold),
-              ),
-              Text(
-                turma,
-                style: const TextStyle(fontWeight: FontWeight.bold),
-              ),
-              const Text(
-                'Incrições até: 10-06-2022 as 23:59',
-                style:
-                    TextStyle(fontWeight: FontWeight.bold, color: Colors.red),
-              ),
-              const SizedBox(
-                height: 5,
-              ),
-              Row(
-                children: [
-                  Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      const Text('Equipe:'),
-                      Row(
-                        mainAxisSize: MainAxisSize.max,
-                        mainAxisAlignment: MainAxisAlignment.start,
-                        children: [
-                          CoordPerfil(imageCoord: imageCoord),
-                          ProfsPerfil(imageProf: imageProf)
-                        ],
-                      ),
-                    ],
-                  ),
-                  Column(
-                    mainAxisSize: MainAxisSize.min,
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: const [
-                      Text('Dúvidas:'),
-                      OrganizerPerfil(),
-                    ],
-                  ),
-                ],
-              ),
-            ],
-          ),
-        )
-      ],
-    );
-  }
-}
-
-class ProfsPerfil extends StatelessWidget {
-  const ProfsPerfil({
-    Key? key,
-    required this.imageProf,
-  }) : super(key: key);
-
-  final String imageProf;
-
-  @override
-  Widget build(BuildContext context) {
-    return Row(
-      children: [
-        Tooltip(
-          message: 'Prof(a).: nomeProfessora',
-          child: Image.network(
-            imageProf,
-            width: 50,
-            height: 50,
-            fit: BoxFit.cover,
-          ),
-        ),
-        Tooltip(
-          message: 'Prof(a).: nomeProfessora',
-          child: Image.network(
-            imageProf,
-            width: 50,
-            height: 50,
-            fit: BoxFit.cover,
-          ),
-        ),
-      ],
-    );
-  }
-}
-
-class CoordPerfil extends StatelessWidget {
-  const CoordPerfil({
-    Key? key,
-    required this.imageCoord,
-  }) : super(key: key);
-
-  final String imageCoord;
-
-  @override
-  Widget build(BuildContext context) {
-    return Tooltip(
-      message: 'Coord.: nomeCoordenador(a)',
-      child: Image.network(
-        imageCoord,
-        width: 50,
-        height: 50,
-        fit: BoxFit.cover,
-      ),
-    );
-  }
-}
-
-class CourseIcon extends StatelessWidget {
-  const CourseIcon({
-    Key? key,
-    required this.imageCourse,
-  }) : super(key: key);
-
-  final String imageCourse;
-
-  @override
-  Widget build(BuildContext context) {
-    return ClipRRect(
-      borderRadius: const BorderRadius.only(
-        bottomLeft: Radius.circular(0),
-        bottomRight: Radius.circular(30),
-        topLeft: Radius.circular(30),
-        topRight: Radius.circular(0),
-      ),
-      child: Image.network(
-        imageCourse,
-        width: 100,
-        height: 100,
-        fit: BoxFit.contain,
       ),
     );
   }

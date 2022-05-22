@@ -148,7 +148,7 @@ class _PurchaseOrderState extends State<PurchaseOrder> {
                                 Tooltip(
                                   message: 'Izaira. Organizadora',
                                   child: Image.network(
-                                    'https://parsefiles.back4app.com/ZuF4FI4dZUN4i9ObIoK6LvTuoIuVFNsVAMRjYNkX/1ff7d0e5a37032c8fd882be43f8f2388_woman4.png',
+                                    'https://parsefiles.back4app.com/ZuF4FI4dZUN4i9ObIoK6LvTuoIuVFNsVAMRjYNkX/297bf3dcf5dc829d9e1933db26fd4cf6_izatar.jpg',
                                     width: 50,
                                     height: 50,
                                     fit: BoxFit.cover,
@@ -294,7 +294,7 @@ class _PurchaseOrderState extends State<PurchaseOrder> {
                                 Tooltip(
                                   message: 'Izaira. Organizadora',
                                   child: Image.network(
-                                    'https://parsefiles.back4app.com/ZuF4FI4dZUN4i9ObIoK6LvTuoIuVFNsVAMRjYNkX/1ff7d0e5a37032c8fd882be43f8f2388_woman4.png',
+                                    'https://parsefiles.back4app.com/ZuF4FI4dZUN4i9ObIoK6LvTuoIuVFNsVAMRjYNkX/297bf3dcf5dc829d9e1933db26fd4cf6_izatar.jpg',
                                     width: 50,
                                     height: 50,
                                     fit: BoxFit.cover,
@@ -443,7 +443,7 @@ class _PurchaseOrderState extends State<PurchaseOrder> {
                                 Tooltip(
                                   message: 'Izaira. Organizadora',
                                   child: Image.network(
-                                    'https://parsefiles.back4app.com/ZuF4FI4dZUN4i9ObIoK6LvTuoIuVFNsVAMRjYNkX/1ff7d0e5a37032c8fd882be43f8f2388_woman4.png',
+                                    'https://parsefiles.back4app.com/ZuF4FI4dZUN4i9ObIoK6LvTuoIuVFNsVAMRjYNkX/297bf3dcf5dc829d9e1933db26fd4cf6_izatar.jpg',
                                     width: 50,
                                     height: 50,
                                     fit: BoxFit.cover,

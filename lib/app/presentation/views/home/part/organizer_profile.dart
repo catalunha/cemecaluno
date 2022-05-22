@@ -1,8 +1,8 @@
 import 'package:aluno/app/presentation/views/utils/app_launch.dart';
 import 'package:flutter/material.dart';
 
-class OrganizerPerfil extends StatelessWidget {
-  const OrganizerPerfil({
+class OrganizerProfile extends StatelessWidget {
+  const OrganizerProfile({
     Key? key,
   }) : super(key: key);
 
@@ -14,11 +14,13 @@ class OrganizerPerfil extends StatelessWidget {
       children: [
         Tooltip(
           message: 'Izaira. Organizadora',
-          child: Image.network(
-            'https://parsefiles.back4app.com/ZuF4FI4dZUN4i9ObIoK6LvTuoIuVFNsVAMRjYNkX/1ff7d0e5a37032c8fd882be43f8f2388_woman4.png',
-            width: 50,
-            height: 50,
-            fit: BoxFit.cover,
+          child: ClipOval(
+            child: Image.network(
+              'https://parsefiles.back4app.com/ZuF4FI4dZUN4i9ObIoK6LvTuoIuVFNsVAMRjYNkX/297bf3dcf5dc829d9e1933db26fd4cf6_izatar.jpg',
+              width: 50,
+              height: 50,
+              fit: BoxFit.cover,
+            ),
           ),
         ),
         Column(
