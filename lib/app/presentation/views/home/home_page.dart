@@ -6,134 +6,191 @@ import 'package:aluno/app/routes.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-class HomePage extends StatelessWidget {
-  final HomeController _homeController = Get.find();
+class HomePage extends StatefulWidget {
+  const HomePage({Key? key}) : super(key: key);
 
-  HomePage({Key? key}) : super(key: key);
+  @override
+  State<HomePage> createState() => _HomePageState();
+}
+
+class _HomePageState extends State<HomePage> {
+  final HomeController _homeController = Get.find();
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppAppbar(
-          title: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: const [
-              Text(
-                'Bem vinda,',
-                style: TextStyle(fontSize: 12),
-              ),
-              Text('Ana'),
-            ],
-          ),
-          actions: [
-            IconButton(
-                onPressed: () {},
-                icon: const Icon(
-                  Icons.shopping_cart_rounded,
-                  color: Colors.red,
-                )),
-            IconButton(
-                onPressed: () {
-                  Get.toNamed(Routes.purchaseOrder);
-                },
-                icon: const Icon(Icons.list)),
-            InkWell(
-              onTap: _homeController.logout,
-              child: ClipRRect(
-                borderRadius: BorderRadius.circular(50),
-                child: Image.network(
-                  'https://parsefiles.back4app.com/ZuF4FI4dZUN4i9ObIoK6LvTuoIuVFNsVAMRjYNkX/0b28345ecb39e2177d1746f80246ed70_woman2.png',
-                  width: 40,
-                  height: 40,
-                  fit: BoxFit.contain,
-                ),
-              ),
+      appBar: AppAppbar(
+        title: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: const [
+            Text(
+              'Bem vinda,',
+              style: TextStyle(fontSize: 12),
             ),
+            Text('Ana'),
           ],
         ),
-        body: Column(
-          mainAxisSize: MainAxisSize.min,
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Expanded(
-              flex: 1,
-              child: Wrap(
-                children: [
-                  SizedBox(
-                    width: 200,
-                    child: cursoPago2(
-                      name: 'nomeCurso01',
-                      turma: '2022.3',
-                      imageCourse:
-                          'https://parsefiles.back4app.com/ZuF4FI4dZUN4i9ObIoK6LvTuoIuVFNsVAMRjYNkX/02f4d2918c8b90cce0578b4838c00cfd_auriculo.jpg',
-                      imageCoord:
-                          'https://parsefiles.back4app.com/ZuF4FI4dZUN4i9ObIoK6LvTuoIuVFNsVAMRjYNkX/01fc68c2af7ade93ce5955afe9cabfbf_man1.png',
-                      imageProf:
-                          'https://parsefiles.back4app.com/ZuF4FI4dZUN4i9ObIoK6LvTuoIuVFNsVAMRjYNkX/4d25fa84c39f08ac1dc1af1f3ab4fe84_woman3.png',
-                    ),
-                  ),
-                  SizedBox(
-                    width: 200,
-                    child: cursoPago2(
-                      name: 'nomeCurso02',
-                      turma: '2021.9',
-                      imageCourse:
-                          'https://parsefiles.back4app.com/ZuF4FI4dZUN4i9ObIoK6LvTuoIuVFNsVAMRjYNkX/cdec4477b1e99e9b98fb45f8be00ac1b_ventosa.jpg',
-                      imageCoord:
-                          'https://parsefiles.back4app.com/ZuF4FI4dZUN4i9ObIoK6LvTuoIuVFNsVAMRjYNkX/1ff7d0e5a37032c8fd882be43f8f2388_woman4.png',
-                      imageProf:
-                          'https://parsefiles.back4app.com/ZuF4FI4dZUN4i9ObIoK6LvTuoIuVFNsVAMRjYNkX/be018b06eab0a32da738b15672979fc0_woman5.png',
-                    ),
-                  )
-                ],
+        actions: [
+          IconButton(
+              onPressed: () {},
+              icon: const Icon(
+                Icons.shopping_cart_rounded,
+                color: Colors.red,
+              )),
+          IconButton(
+              onPressed: () {
+                Get.toNamed(Routes.purchaseOrder);
+              },
+              icon: const Icon(Icons.list)),
+          InkWell(
+            onTap: _homeController.logout,
+            child: ClipRRect(
+              borderRadius: BorderRadius.circular(50),
+              child: Image.network(
+                'https://parsefiles.back4app.com/ZuF4FI4dZUN4i9ObIoK6LvTuoIuVFNsVAMRjYNkX/0b28345ecb39e2177d1746f80246ed70_woman2.png',
+                width: 40,
+                height: 40,
+                fit: BoxFit.contain,
               ),
             ),
-            Expanded(
-              flex: 2,
-              child: Container(
-                color: Colors.black12,
-                padding: const EdgeInsets.all(10),
-                child: Column(
+          ),
+        ],
+      ),
+      body: Column(
+        mainAxisSize: MainAxisSize.min,
+        crossAxisAlignment: CrossAxisAlignment.center,
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          Expanded(
+            flex: 1,
+            child: Container(
+              color: Colors.black12,
+              width: double.infinity,
+              child: SingleChildScrollView(
+                controller: ScrollController(),
+                child: Wrap(
+                  alignment: WrapAlignment.center,
                   children: [
-                    const Text(
-                      'Outras cursos pra você',
-                      style: TextStyle(
-                          fontWeight: FontWeight.bold, fontSize: 16.0),
-                    ),
-                    Expanded(
-                      // flex: 3,
-                      child: Container(
-                        // color: Colors.black,
-                        child: ListView(children: [
-                          cursoOferta(
-                            name: 'nomeCurso03',
-                            turma: '2022.1',
-                            imageCourse:
-                                'https://parsefiles.back4app.com/ZuF4FI4dZUN4i9ObIoK6LvTuoIuVFNsVAMRjYNkX/cdec4477b1e99e9b98fb45f8be00ac1b_ventosa.jpg',
-                            imageCoord:
-                                'https://parsefiles.back4app.com/ZuF4FI4dZUN4i9ObIoK6LvTuoIuVFNsVAMRjYNkX/01fc68c2af7ade93ce5955afe9cabfbf_man1.png',
-                            imageProf:
-                                'https://parsefiles.back4app.com/ZuF4FI4dZUN4i9ObIoK6LvTuoIuVFNsVAMRjYNkX/01fc68c2af7ade93ce5955afe9cabfbf_man1.png',
-                          ),
-                          cursoOferta(
-                            name: 'nomeCurso04',
-                            turma: '2021.7',
-                            imageCourse:
-                                'https://parsefiles.back4app.com/ZuF4FI4dZUN4i9ObIoK6LvTuoIuVFNsVAMRjYNkX/02f4d2918c8b90cce0578b4838c00cfd_auriculo.jpg',
-                            imageCoord:
-                                'https://parsefiles.back4app.com/ZuF4FI4dZUN4i9ObIoK6LvTuoIuVFNsVAMRjYNkX/01fc68c2af7ade93ce5955afe9cabfbf_man1.png',
-                            imageProf:
-                                'https://parsefiles.back4app.com/ZuF4FI4dZUN4i9ObIoK6LvTuoIuVFNsVAMRjYNkX/01fc68c2af7ade93ce5955afe9cabfbf_man1.png',
-                          )
-                        ]),
+                    SizedBox(
+                      width: 200,
+                      child: cursoPago2(
+                        name: 'nomeCurso01',
+                        turma: '2022.3',
+                        imageCourse:
+                            'https://parsefiles.back4app.com/ZuF4FI4dZUN4i9ObIoK6LvTuoIuVFNsVAMRjYNkX/02f4d2918c8b90cce0578b4838c00cfd_auriculo.jpg',
+                        imageCoord:
+                            'https://parsefiles.back4app.com/ZuF4FI4dZUN4i9ObIoK6LvTuoIuVFNsVAMRjYNkX/01fc68c2af7ade93ce5955afe9cabfbf_man1.png',
+                        imageProf:
+                            'https://parsefiles.back4app.com/ZuF4FI4dZUN4i9ObIoK6LvTuoIuVFNsVAMRjYNkX/4d25fa84c39f08ac1dc1af1f3ab4fe84_woman3.png',
                       ),
                     ),
+                    SizedBox(
+                      width: 200,
+                      child: cursoPago2(
+                        name: 'nomeCurso02',
+                        turma: '2021.9',
+                        imageCourse:
+                            'https://parsefiles.back4app.com/ZuF4FI4dZUN4i9ObIoK6LvTuoIuVFNsVAMRjYNkX/cdec4477b1e99e9b98fb45f8be00ac1b_ventosa.jpg',
+                        imageCoord:
+                            'https://parsefiles.back4app.com/ZuF4FI4dZUN4i9ObIoK6LvTuoIuVFNsVAMRjYNkX/1ff7d0e5a37032c8fd882be43f8f2388_woman4.png',
+                        imageProf:
+                            'https://parsefiles.back4app.com/ZuF4FI4dZUN4i9ObIoK6LvTuoIuVFNsVAMRjYNkX/be018b06eab0a32da738b15672979fc0_woman5.png',
+                      ),
+                    ),
+                    SizedBox(
+                      width: 200,
+                      child: cursoPago2(
+                        name: 'nomeCurso02',
+                        turma: '2021.9',
+                        imageCourse:
+                            'https://parsefiles.back4app.com/ZuF4FI4dZUN4i9ObIoK6LvTuoIuVFNsVAMRjYNkX/cdec4477b1e99e9b98fb45f8be00ac1b_ventosa.jpg',
+                        imageCoord:
+                            'https://parsefiles.back4app.com/ZuF4FI4dZUN4i9ObIoK6LvTuoIuVFNsVAMRjYNkX/1ff7d0e5a37032c8fd882be43f8f2388_woman4.png',
+                        imageProf:
+                            'https://parsefiles.back4app.com/ZuF4FI4dZUN4i9ObIoK6LvTuoIuVFNsVAMRjYNkX/be018b06eab0a32da738b15672979fc0_woman5.png',
+                      ),
+                    )
                   ],
                 ),
               ),
-            )
-          ],
-        ));
+            ),
+          ),
+          Expanded(
+            flex: 2,
+            child: Container(
+              color: Colors.black38,
+              width: double.infinity,
+              child: Column(
+                children: [
+                  Container(
+                    width: 300,
+                    color: Colors.black87,
+                    child: const Align(
+                      alignment: Alignment.center,
+                      child: Text(
+                        'Outros cursos pra você',
+                        style: TextStyle(
+                            color: Colors.white,
+                            fontWeight: FontWeight.bold,
+                            fontSize: 16.0),
+                      ),
+                    ),
+                  ),
+                  Expanded(
+                    child: SingleChildScrollView(
+                      controller: ScrollController(),
+                      child: Wrap(
+                        children: [
+                          SizedBox(
+                            width: 350,
+                            child: cursoOferta(
+                              name: 'nomeCurso03',
+                              turma: '2022.1',
+                              imageCourse:
+                                  'https://parsefiles.back4app.com/ZuF4FI4dZUN4i9ObIoK6LvTuoIuVFNsVAMRjYNkX/cdec4477b1e99e9b98fb45f8be00ac1b_ventosa.jpg',
+                              imageCoord:
+                                  'https://parsefiles.back4app.com/ZuF4FI4dZUN4i9ObIoK6LvTuoIuVFNsVAMRjYNkX/01fc68c2af7ade93ce5955afe9cabfbf_man1.png',
+                              imageProf:
+                                  'https://parsefiles.back4app.com/ZuF4FI4dZUN4i9ObIoK6LvTuoIuVFNsVAMRjYNkX/01fc68c2af7ade93ce5955afe9cabfbf_man1.png',
+                            ),
+                          ),
+                          SizedBox(
+                            width: 350,
+                            child: cursoOferta(
+                              name: 'nomeCurso04',
+                              turma: '2021.7',
+                              imageCourse:
+                                  'https://parsefiles.back4app.com/ZuF4FI4dZUN4i9ObIoK6LvTuoIuVFNsVAMRjYNkX/02f4d2918c8b90cce0578b4838c00cfd_auriculo.jpg',
+                              imageCoord:
+                                  'https://parsefiles.back4app.com/ZuF4FI4dZUN4i9ObIoK6LvTuoIuVFNsVAMRjYNkX/01fc68c2af7ade93ce5955afe9cabfbf_man1.png',
+                              imageProf:
+                                  'https://parsefiles.back4app.com/ZuF4FI4dZUN4i9ObIoK6LvTuoIuVFNsVAMRjYNkX/01fc68c2af7ade93ce5955afe9cabfbf_man1.png',
+                            ),
+                          ),
+                          SizedBox(
+                            width: 350,
+                            child: cursoOferta(
+                              name: 'nomeCurso04',
+                              turma: '2021.7',
+                              imageCourse:
+                                  'https://parsefiles.back4app.com/ZuF4FI4dZUN4i9ObIoK6LvTuoIuVFNsVAMRjYNkX/02f4d2918c8b90cce0578b4838c00cfd_auriculo.jpg',
+                              imageCoord:
+                                  'https://parsefiles.back4app.com/ZuF4FI4dZUN4i9ObIoK6LvTuoIuVFNsVAMRjYNkX/01fc68c2af7ade93ce5955afe9cabfbf_man1.png',
+                              imageProf:
+                                  'https://parsefiles.back4app.com/ZuF4FI4dZUN4i9ObIoK6LvTuoIuVFNsVAMRjYNkX/01fc68c2af7ade93ce5955afe9cabfbf_man1.png',
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          ),
+        ],
+      ),
+    );
   }
 
   Card cursoOferta({
@@ -195,9 +252,12 @@ class HomePage extends StatelessWidget {
                       height: 5,
                     ),
                     Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      // mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                       children: [
                         Column(
+                          // mainAxisSize: MainAxisSize.max,
+                          // mainAxisAlignment: MainAxisAlignment.start,
+                          crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             const Text('Equipe:'),
                             Row(
@@ -222,15 +282,27 @@ class HomePage extends StatelessWidget {
                                     fit: BoxFit.cover,
                                   ),
                                 ),
+                                Tooltip(
+                                  message: 'Prof(a).: nomeProfessora',
+                                  child: Image.network(
+                                    imageProf,
+                                    width: 50,
+                                    height: 50,
+                                    fit: BoxFit.cover,
+                                  ),
+                                ),
                               ],
                             ),
                           ],
                         ),
-                        const VerticalDivider(
-                          width: 15,
-                          color: Colors.red,
-                        ),
+                        // const VerticalDivider(
+                        //   width: 15,
+                        //   color: Colors.red,
+                        // ),
                         Column(
+                          mainAxisSize: MainAxisSize.min,
+                          mainAxisAlignment: MainAxisAlignment.start,
+                          crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             const Text('Dúvidas:'),
                             Row(
@@ -312,160 +384,10 @@ class HomePage extends StatelessWidget {
               ),
             ],
           ),
-          // Column(
-          //   mainAxisAlignment: MainAxisAlignment.start,
-          //   crossAxisAlignment: CrossAxisAlignment.start,
-          //   children: [
-          //     // const Text('Modalidades de pagamento:'),
-          //     InkWell(
-          //       onTap: () {
-          //         Get.toNamed(Routes.purchaseCart, arguments: 'pix');
-          //       },
-          //       child: Row(
-          //         children: const [
-          //           Icon(Icons.pix),
-          //           Text('PIX: R\$390,00 a vista')
-          //         ],
-          //       ),
-          //     ),
-          //     InkWell(
-          //       onTap: () {
-          //         Get.toNamed(Routes.purchaseCart, arguments: 'bankslip');
-          //       },
-          //       child: Row(
-          //         children: const [
-          //           Icon(Icons.sticky_note_2),
-          //           Text('Boleto: R\$ 295,00 a vista')
-          //         ],
-          //       ),
-          //     ),
-
-          //     InkWell(
-          //       onTap: () {
-          //         Get.toNamed(Routes.purchaseCart, arguments: 'card');
-          //       },
-          //       child: Row(
-          //         children: const [
-          //           Icon(Icons.credit_card),
-          //           Text('Cartão: R\$110,00 em 3 parcelas')
-          //         ],
-          //       ),
-          //     ),
-          //   ],
-          // ),
         ],
       ),
     );
   }
-
-  // Card cursoPago(
-  //     {required String name,
-  //     required String imageCourse,
-  //     required String imageCoord,
-  //     required String imageProf}) {
-  //   return Card(
-  //     child: Column(
-  //       // mainAxisSize: MainAxisSize.min,
-  //       // crossAxisAlignment: CrossAxisAlignment.start,
-  //       children: [
-  //         Row(
-  //           mainAxisSize: MainAxisSize.min,
-  //           crossAxisAlignment: CrossAxisAlignment.start,
-  //           children: [
-  //             ClipRRect(
-  //               borderRadius: const BorderRadius.only(
-  //                 bottomLeft: Radius.circular(0),
-  //                 bottomRight: Radius.circular(30),
-  //                 topLeft: Radius.circular(30),
-  //                 topRight: Radius.circular(0),
-  //               ),
-  //               child: Image.network(
-  //                 imageCourse,
-  //                 width: 100,
-  //                 height: 100,
-  //                 fit: BoxFit.contain,
-  //               ),
-  //             ),
-  //             const SizedBox(
-  //               width: 10,
-  //             ),
-  //             Expanded(
-  //               child: Column(
-  //                 mainAxisSize: MainAxisSize.min,
-  //                 // mainAxisAlignment: MainAxisAlignment.start,
-  //                 crossAxisAlignment: CrossAxisAlignment.start,
-  //                 children: [
-  //                   Text(
-  //                     name,
-  //                     style: const TextStyle(fontWeight: FontWeight.bold),
-  //                   ),
-  //                   const SizedBox(
-  //                     height: 5,
-  //                   ),
-  //                   Row(
-  //                     crossAxisAlignment: CrossAxisAlignment.start,
-  //                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-  //                     children: [
-  //                       Column(
-  //                         children: [
-  //                           const Text('Equipe:'),
-  //                           Row(
-  //                             mainAxisSize: MainAxisSize.max,
-  //                             mainAxisAlignment: MainAxisAlignment.start,
-  //                             children: [
-  //                               Column(
-  //                                 mainAxisSize: MainAxisSize.min,
-  //                                 children: [
-  //                                   Tooltip(
-  //                                     message: 'Coord.: nomeCoordenador(a)',
-  //                                     child: Image.network(
-  //                                       imageCoord,
-  //                                       width: 50,
-  //                                       height: 50,
-  //                                       fit: BoxFit.cover,
-  //                                     ),
-  //                                   ),
-  //                                 ],
-  //                               ),
-  //                               Tooltip(
-  //                                 message: 'Prof(a).: nomeProfessora',
-  //                                 child: Image.network(
-  //                                   imageProf,
-  //                                   width: 50,
-  //                                   height: 50,
-  //                                   fit: BoxFit.cover,
-  //                                 ),
-  //                               ),
-  //                             ],
-  //                           ),
-  //                         ],
-  //                       ),
-  //                       Column(
-  //                         children: [
-  //                           const Text('Comunidade:'),
-  //                           InkWell(
-  //                             onTap: () =>
-  //                                 AppLaunch.launch('https://discord.com'),
-  //                             child: Image.network(
-  //                               'https://parsefiles.back4app.com/ZuF4FI4dZUN4i9ObIoK6LvTuoIuVFNsVAMRjYNkX/471cd767e375913b3cab8fc4d97f24be_comunidade.png',
-  //                               width: 50,
-  //                               height: 50,
-  //                               fit: BoxFit.cover,
-  //                             ),
-  //                           )
-  //                         ],
-  //                       )
-  //                     ],
-  //                   )
-  //                 ],
-  //               ),
-  //             )
-  //           ],
-  //         ),
-  //       ],
-  //     ),
-  //   );
-  // }
 
   Card cursoPago2({
     required String name,
@@ -538,6 +460,15 @@ class HomePage extends StatelessWidget {
                     ),
                   ),
                 ],
+              ),
+              Tooltip(
+                message: 'Prof(a).: nomeProfessora',
+                child: Image.network(
+                  imageProf,
+                  width: 40,
+                  height: 40,
+                  fit: BoxFit.cover,
+                ),
               ),
               Tooltip(
                 message: 'Prof(a).: nomeProfessora',
