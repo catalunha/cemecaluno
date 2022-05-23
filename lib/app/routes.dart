@@ -2,6 +2,7 @@ import 'package:aluno/app/presentation/controllers/auth/email/auth_register_emai
 import 'package:aluno/app/presentation/controllers/auth/login/login_dependencies.dart';
 import 'package:aluno/app/presentation/controllers/auth/splash/splash_dependencies.dart';
 import 'package:aluno/app/presentation/controllers/home/home_dependencies.dart';
+import 'package:aluno/app/presentation/controllers/user/profile/user_profile_dependencies.dart';
 import 'package:aluno/app/presentation/views/auth/login/auth_login_page.dart';
 import 'package:aluno/app/presentation/views/auth/register/email/auth_register_email.page.dart';
 import 'package:aluno/app/presentation/views/auth/splash/splash_page.dart';
@@ -9,6 +10,7 @@ import 'package:aluno/app/presentation/views/course/course_page.dart';
 import 'package:aluno/app/presentation/views/home/home_page.dart';
 import 'package:aluno/app/presentation/views/purchase/cart/purchase_cart.dart';
 import 'package:aluno/app/presentation/views/purchase/order/purchase_order.dart';
+import 'package:aluno/app/presentation/views/user/profile/user_profile_page.dart';
 import 'package:get/get.dart';
 
 class Routes {
@@ -18,6 +20,7 @@ class Routes {
   static const authRegisterEmail = '/auth/register/email';
 
   static const home = '/home';
+  static const userProfile = '/user/profile';
 
   static const purchaseCart = '/purchase/cart';
   static const purchaseOrder = '/purchase/order';
@@ -59,6 +62,11 @@ class Routes {
       name: Routes.course,
       // binding: HomeDependencies(),
       page: () => const CoursePage(),
+    ),
+    GetPage(
+      name: Routes.userProfile,
+      binding: UserProfileDependencies(),
+      page: () => UserProfilePage(),
     ),
   ];
 }

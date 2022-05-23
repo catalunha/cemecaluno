@@ -1,6 +1,6 @@
 import 'package:aluno/app/presentation/views/utils/app_appbar.dart';
 import 'package:aluno/app/presentation/views/utils/app_launch.dart';
-import 'package:aluno/app/presentation/views/utils/linear_progress_indicator.dart';
+import 'package:aluno/app/presentation/views/utils/app_linear_progress_indicator.dart';
 import 'package:flutter/material.dart';
 
 class PurchaseOrder extends StatefulWidget {
@@ -184,11 +184,13 @@ class _PurchaseOrderState extends State<PurchaseOrder> {
           const Text('Opção: 1x'),
           const Text('Pagamento realizado em: 10-06-2022 as 16:34'),
           const Text('Código da transação: f2342fsdffw342rweasds343ssd'),
+          const Text('Certificado do Curso.'),
+          const Text('Arquivar este curso'),
           Row(
             children: const [
               Text('Progresso nos estudos:'),
               SizedBox(width: 5),
-              LinearPercentIndicator(percent: 0.213),
+              AppLinearPercentIndicator(percent: 0.213),
             ],
           )
         ],

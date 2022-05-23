@@ -10,13 +10,13 @@ class SplashDependencies implements Bindings {
   void dependencies() {
     Get.put<AuthRepository>(
       AuthRepositoryB4a(),
-      permanent: true,
+      // permanent: true,
     );
     Get.put<AuthUseCase>(
       AuthUseCaseImpl(
         authRepository: Get.find(),
       ),
-      permanent: true,
+      // permanent: true,
     );
     Get.put<SplashController>(
       SplashController(

@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 
-class LinearPercentIndicator extends StatelessWidget {
+class AppLinearPercentIndicator extends StatelessWidget {
   final double percent;
   final double width;
   final double height;
   final Color progressColor;
   final Color backgroundColor;
-  const LinearPercentIndicator({
+  const AppLinearPercentIndicator({
     Key? key,
     required this.percent,
     this.width = 100,

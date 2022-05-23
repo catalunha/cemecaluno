@@ -11,7 +11,8 @@ class InitBack4app {
     const keyClientKey = 'o95t2IrCn5PNbgPzomQ1RSAwB2iob1jmOuhYfL0T';
     const keyLiveQueryUrl = 'https://cemecaluno.b4a.io';
     await Parse().initialize(
-      keyApplicationId, keyParseServerUrl,
+      keyApplicationId,
+      keyParseServerUrl,
       clientKey: keyClientKey,
       liveQueryUrl: keyLiveQueryUrl,
       autoSendSessionId: true,

@@ -1,5 +1,6 @@
 import 'package:aluno/app/data/datasource/back4app/init_back4app.dart';
 import 'package:aluno/app/domain/entity/user_entity.dart';
+import 'package:aluno/app/domain/entity/user_profile_entity.dart';
 import 'package:aluno/app/domain/usecases/auth/auth_usecase.dart';
 import 'package:aluno/app/routes.dart';
 import 'package:get/get.dart';
@@ -19,7 +20,11 @@ class SplashController extends GetxController {
   final _userModel = Rxn<UserModel>();
   UserModel? get userModel => _userModel.value;
   set userModel(UserModel? userModel) {
-    _userModel(userModel);
+    // _userModel(userModel);
+    print('======> update Model');
+    _userModel.update((val) {
+      val?.profile = userModel?.profile!;
+    });
   }
 
   @override
@@ -61,13 +66,70 @@ class SplashController extends GetxController {
       await parseUser!.logout();
       return false;
     } else {
-      userModel = UserModel(
+      // QueryBuilder<ParseUser> queryUser =
+      //     QueryBuilder<ParseUser>(ParseUser.forQuery());
+      // queryUser.object = parseUser!;
+      // queryUser.includeObject(['profile']);
+      // ParseUser? parseUser2 = await queryUser.first();
+
+      // print('===> profile');
+      // userModel = UserModel.fromParse(parseUser2!);
+      // print(userModel);
+      var profileField = parseUser!.get('profile');
+      print('===> profile');
+      print(profileField);
+      var profileObj = ParseObject('Profile');
+      var profileData = await profileObj.getObject(profileField.objectId);
+      UserProfileEntity? userProfileEntity;
+      if (profileData.success) {
+        (profileData.result as ParseObject).get('fullName');
+        userProfileEntity =
+            UserProfileEntity.fromParse(profileData.result as ParseObject);
+      } else {
+        print('nao foi');
+      }
+      // userModel = UserModel(
+      //   id: parseUser!.objectId!,
+      //   email: parseUser!.emailAddress!,
+      //   phone: parseUser!.username!,
+      //   profile: userProfileEntity,
+      // );
+      _userModel(UserModel(
         id: parseUser!.objectId!,
         email: parseUser!.emailAddress!,
         phone: parseUser!.username!,
-      );
+        profile: userProfileEntity,
+      ));
+      print('===> user');
+      print(userModel);
       return true;
     }
+  }
+
+  Future<bool> updateUserProfile() async {
+    parseUser = await ParseUser.currentUser() as ParseUser?;
+    var profileField = parseUser!.get('profile');
+    print('===> profile');
+    print(profileField);
+    var profileObj = ParseObject('Profile');
+    var profileData = await profileObj.getObject(profileField.objectId);
+    UserProfileEntity? userProfileEntity;
+    if (profileData.success) {
+      (profileData.result as ParseObject).get('fullName');
+      userProfileEntity =
+          UserProfileEntity.fromParse(profileData.result as ParseObject);
+    } else {
+      print('nao foi');
+    }
+    userModel = UserModel(
+      id: parseUser!.objectId!,
+      email: parseUser!.emailAddress!,
+      phone: parseUser!.username!,
+      profile: userProfileEntity,
+    );
+    print('===> user');
+    print(userModel);
+    return true;
   }
 
   // Future<void> logout() async => await _authUseCase.logout();

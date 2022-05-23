@@ -23,7 +23,6 @@ class AuthRepositoryB4a implements AuthRepository {
         return userModel;
       } else {
         print('register error');
-
         throw AuthRepositoryException(
             code: '${response.error!.code}', message: response.error!.message);
       }

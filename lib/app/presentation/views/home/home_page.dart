@@ -1,24 +1,27 @@
+import 'package:aluno/app/presentation/controllers/auth/splash/splash_controller.dart';
 import 'package:aluno/app/presentation/views/home/part/course_icon.dart';
 import 'package:aluno/app/presentation/views/home/part/course_sale.dart';
+import 'package:aluno/app/presentation/views/home/part/popmenu_user.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 import 'package:aluno/app/presentation/controllers/home/home_controller.dart';
 import 'package:aluno/app/presentation/views/utils/app_appbar.dart';
 import 'package:aluno/app/presentation/views/utils/app_launch.dart';
-import 'package:aluno/app/presentation/views/utils/linear_progress_indicator.dart';
+import 'package:aluno/app/presentation/views/utils/app_linear_progress_indicator.dart';
 import 'package:aluno/app/routes.dart';
 
 class HomePage extends StatefulWidget {
-  const HomePage({Key? key}) : super(key: key);
+  final SplashController _splashController = Get.find();
+  final HomeController _homeController = Get.find();
+
+  HomePage({Key? key}) : super(key: key);
 
   @override
   State<HomePage> createState() => _HomePageState();
 }
 
 class _HomePageState extends State<HomePage> {
-  final HomeController _homeController = Get.find();
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -27,7 +30,8 @@ class _HomePageState extends State<HomePage> {
         actions: [
           appBarActionCart(),
           appBarActionCourses(),
-          appBarActionUser(),
+          // appBarActionUser(),
+          PopMenuButtonPhotoUser(),
         ],
       ),
       body: Column(
@@ -169,7 +173,7 @@ class _HomePageState extends State<HomePage> {
 
   InkWell appBarActionUser() {
     return InkWell(
-      onTap: _homeController.logout,
+      onTap: widget._homeController.logout,
       child: ClipRRect(
         borderRadius: BorderRadius.circular(50),
         child: Image.network(
@@ -201,17 +205,19 @@ class _HomePageState extends State<HomePage> {
     );
   }
 
-  Column appBarTitle() {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: const [
-        Text(
-          'Bem vinda,',
-          style: TextStyle(fontSize: 12),
-        ),
-        Text('Ana'),
-      ],
-    );
+  Widget appBarTitle() {
+    return Obx(() => Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            const Text(
+              'Bem vinda(o),',
+              style: TextStyle(fontSize: 12),
+            ),
+            Text(widget._splashController.userModel?.profile?.nameTag == null
+                ? "Atualize seu perfil em 😟."
+                : widget._splashController.userModel!.profile!.nameTag!),
+          ],
+        ));
   }
 
   Card cursoOferta({
@@ -358,7 +364,7 @@ class _HomePageState extends State<HomePage> {
               ),
             ],
           ),
-          const LinearPercentIndicator(percent: 0.213),
+          const AppLinearPercentIndicator(percent: 0.213),
         ],
       ),
     );

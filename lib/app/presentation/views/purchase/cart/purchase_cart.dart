@@ -52,39 +52,39 @@ class _PurchaseCartState extends State<PurchaseCart> {
             alignment: WrapAlignment.spaceEvenly,
             // runAlignment: WrapAlignment.center,
             children: [
-              // if (widget.tipoPay == 'pix')
-              cursoPagtoPix(
-                name: 'nomeCurso04 (Pagar com PIX)',
-                turma: '2022.1',
-                imageCourse:
-                    'https://parsefiles.back4app.com/ZuF4FI4dZUN4i9ObIoK6LvTuoIuVFNsVAMRjYNkX/02f4d2918c8b90cce0578b4838c00cfd_auriculo.jpg',
-                imageCoord:
-                    'https://parsefiles.back4app.com/ZuF4FI4dZUN4i9ObIoK6LvTuoIuVFNsVAMRjYNkX/01fc68c2af7ade93ce5955afe9cabfbf_man1.png',
-                imageProf:
-                    'https://parsefiles.back4app.com/ZuF4FI4dZUN4i9ObIoK6LvTuoIuVFNsVAMRjYNkX/01fc68c2af7ade93ce5955afe9cabfbf_man1.png',
-              ),
-              // if (widget.tipoPay == 'bankslip')
-              cursoPagtoBankslip(
-                name: 'nomeCurso05 (Pagar com Boleto)',
-                turma: '2022.1',
-                imageCourse:
-                    'https://parsefiles.back4app.com/ZuF4FI4dZUN4i9ObIoK6LvTuoIuVFNsVAMRjYNkX/02f4d2918c8b90cce0578b4838c00cfd_auriculo.jpg',
-                imageCoord:
-                    'https://parsefiles.back4app.com/ZuF4FI4dZUN4i9ObIoK6LvTuoIuVFNsVAMRjYNkX/01fc68c2af7ade93ce5955afe9cabfbf_man1.png',
-                imageProf:
-                    'https://parsefiles.back4app.com/ZuF4FI4dZUN4i9ObIoK6LvTuoIuVFNsVAMRjYNkX/01fc68c2af7ade93ce5955afe9cabfbf_man1.png',
-              ),
-              // if (widget.tipoPay == 'card')
-              cursoPagtoCard(
-                name: 'nomeCurso06 (Pagar com Cartão)',
-                turma: '2022.1',
-                imageCourse:
-                    'https://parsefiles.back4app.com/ZuF4FI4dZUN4i9ObIoK6LvTuoIuVFNsVAMRjYNkX/02f4d2918c8b90cce0578b4838c00cfd_auriculo.jpg',
-                imageCoord:
-                    'https://parsefiles.back4app.com/ZuF4FI4dZUN4i9ObIoK6LvTuoIuVFNsVAMRjYNkX/01fc68c2af7ade93ce5955afe9cabfbf_man1.png',
-                imageProf:
-                    'https://parsefiles.back4app.com/ZuF4FI4dZUN4i9ObIoK6LvTuoIuVFNsVAMRjYNkX/01fc68c2af7ade93ce5955afe9cabfbf_man1.png',
-              ),
+              if (widget.tipoPay == 'pix')
+                cursoPagtoPix(
+                  name: 'nomeCurso04 (Pagar com PIX)',
+                  turma: '2022.1',
+                  imageCourse:
+                      'https://parsefiles.back4app.com/ZuF4FI4dZUN4i9ObIoK6LvTuoIuVFNsVAMRjYNkX/02f4d2918c8b90cce0578b4838c00cfd_auriculo.jpg',
+                  imageCoord:
+                      'https://parsefiles.back4app.com/ZuF4FI4dZUN4i9ObIoK6LvTuoIuVFNsVAMRjYNkX/01fc68c2af7ade93ce5955afe9cabfbf_man1.png',
+                  imageProf:
+                      'https://parsefiles.back4app.com/ZuF4FI4dZUN4i9ObIoK6LvTuoIuVFNsVAMRjYNkX/01fc68c2af7ade93ce5955afe9cabfbf_man1.png',
+                ),
+              if (widget.tipoPay == 'bankslip')
+                cursoPagtoBankslip(
+                  name: 'nomeCurso05 (Pagar com Boleto)',
+                  turma: '2022.1',
+                  imageCourse:
+                      'https://parsefiles.back4app.com/ZuF4FI4dZUN4i9ObIoK6LvTuoIuVFNsVAMRjYNkX/02f4d2918c8b90cce0578b4838c00cfd_auriculo.jpg',
+                  imageCoord:
+                      'https://parsefiles.back4app.com/ZuF4FI4dZUN4i9ObIoK6LvTuoIuVFNsVAMRjYNkX/01fc68c2af7ade93ce5955afe9cabfbf_man1.png',
+                  imageProf:
+                      'https://parsefiles.back4app.com/ZuF4FI4dZUN4i9ObIoK6LvTuoIuVFNsVAMRjYNkX/01fc68c2af7ade93ce5955afe9cabfbf_man1.png',
+                ),
+              if (widget.tipoPay == 'card')
+                cursoPagtoCard(
+                  name: 'nomeCurso06 (Pagar com Cartão)',
+                  turma: '2022.1',
+                  imageCourse:
+                      'https://parsefiles.back4app.com/ZuF4FI4dZUN4i9ObIoK6LvTuoIuVFNsVAMRjYNkX/02f4d2918c8b90cce0578b4838c00cfd_auriculo.jpg',
+                  imageCoord:
+                      'https://parsefiles.back4app.com/ZuF4FI4dZUN4i9ObIoK6LvTuoIuVFNsVAMRjYNkX/01fc68c2af7ade93ce5955afe9cabfbf_man1.png',
+                  imageProf:
+                      'https://parsefiles.back4app.com/ZuF4FI4dZUN4i9ObIoK6LvTuoIuVFNsVAMRjYNkX/01fc68c2af7ade93ce5955afe9cabfbf_man1.png',
+                ),
             ],
           ),
         ),
@@ -265,7 +265,9 @@ class _PurchaseCartState extends State<PurchaseCart> {
               }).toList(),
             ),
             ElevatedButton(
-                onPressed: () {}, child: const Text('Gerar QRCode.')),
+              onPressed: () {},
+              child: const Text('Gerar QRCode.'),
+            ),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: const [

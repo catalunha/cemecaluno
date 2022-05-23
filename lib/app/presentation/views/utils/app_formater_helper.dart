@@ -1,7 +1,7 @@
 import 'package:intl/intl.dart';
 
-class FormatterHelper {
-  FormatterHelper._();
+class AppFormatterHelper {
+  AppFormatterHelper._();
   static final _currencyFormat = NumberFormat.currency(
     locale: 'pt_BR',
     symbol: r'R$',

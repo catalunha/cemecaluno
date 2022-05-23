@@ -1,26 +1,33 @@
 import 'dart:convert';
 
+import 'package:aluno/app/domain/entity/user_profile_entity.dart';
+import 'package:parse_server_sdk_flutter/parse_server_sdk.dart';
+
 class UserModel {
   static const String className = '_User';
 
   final String id;
   final String email;
   final String phone;
+  UserProfileEntity? profile;
   UserModel({
     required this.id,
     required this.email,
     required this.phone,
+    this.profile,
   });
 
   UserModel copyWith({
     String? id,
     String? email,
     String? phone,
+    UserProfileEntity? profile,
   }) {
     return UserModel(
       id: id ?? this.id,
       email: email ?? this.email,
       phone: phone ?? this.phone,
+      profile: profile ?? this.profile,
     );
   }
 
@@ -29,6 +36,7 @@ class UserModel {
       'id': id,
       'email': email,
       'phone': phone,
+      'profile': profile?.toMap(),
     };
   }
 
@@ -37,6 +45,7 @@ class UserModel {
       id: map['id'] ?? '',
       email: map['email'] ?? '',
       phone: map['phone'] ?? '',
+      profile: UserProfileEntity.fromMap(map['profile']),
     );
   }
 
@@ -45,8 +54,18 @@ class UserModel {
   factory UserModel.fromJson(String source) =>
       UserModel.fromMap(json.decode(source));
 
+  factory UserModel.fromParse(ParseUser parseUser) {
+    return UserModel(
+      id: parseUser.objectId!,
+      email: parseUser.emailAddress!,
+      phone: parseUser.username!,
+      profile: UserProfileEntity.fromParse(parseUser.get('profile')),
+    );
+  }
+
   @override
-  String toString() => 'UserModel(id: $id, email: $email, phone: $phone)';
+  String toString() =>
+      'UserModel(id: $id, email: $email, phone: $phone, profile: $profile)';
 
   @override
   bool operator ==(Object other) {
