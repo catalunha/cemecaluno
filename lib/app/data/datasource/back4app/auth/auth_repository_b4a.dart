@@ -17,9 +17,7 @@ class AuthRepositoryB4a implements AuthRepository {
       var response = await user.signUp();
       if (response.success) {
         print('register success');
-        String result = response.results![0].toString();
-        UserModel userModel = UserModel.fromJson(result);
-        print(userModel.toMap());
+        UserModel userModel = UserModel.fromParse(response.results!.first);
         return userModel;
       } else {
         print('register error');
@@ -41,9 +39,8 @@ class AuthRepositoryB4a implements AuthRepository {
 
       var response = await user.login();
       if (response.success) {
-        String result = response.results![0].toString();
-        UserModel userModel = UserModel.fromJson(result);
-        // print(userModel.toMap());
+        UserModel userModel = UserModel.fromParse(response.results!.first);
+        print(userModel);
         return userModel;
       } else {
         throw AuthRepositoryException(
@@ -58,7 +55,7 @@ class AuthRepositoryB4a implements AuthRepository {
         rethrow;
       }
     }
-    return null;
+    // return null;
   }
 
   @override

@@ -7,9 +7,6 @@ import 'package:get/get.dart';
 class PopMenuButtonPhotoUser extends StatelessWidget {
   final HomeController _homeController = Get.find();
   final SplashController _splashController = Get.find();
-  // final AuthController _authController = Get.find();
-  final UserDisplayNameVN = ValueNotifier<String>('');
-  final UserPhotoUrlVN = ValueNotifier<String>('');
 
   PopMenuButtonPhotoUser({Key? key}) : super(key: key);
 
@@ -60,9 +57,12 @@ class PopMenuButtonPhotoUser extends StatelessWidget {
                       );
                     },
                   )
-                : const Icon(
-                    Icons.insert_emoticon_rounded,
-                    color: Colors.red,
+                : const Align(
+                    alignment: Alignment.center,
+                    child: Text(
+                      '🤪',
+                      style: TextStyle(fontSize: 20),
+                    ),
                   ),
           ),
         ),

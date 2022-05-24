@@ -214,7 +214,7 @@ class _HomePageState extends State<HomePage> {
               style: TextStyle(fontSize: 12),
             ),
             Text(widget._splashController.userModel?.profile?.nameTag == null
-                ? "Atualize seu perfil em 😟."
+                ? "Atualize seu perfil em 🤪."
                 : widget._splashController.userModel!.profile!.nameTag!),
           ],
         ));

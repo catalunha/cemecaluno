@@ -4,3 +4,6 @@
 Parse.Cloud.define("hello", (request) => {
 	return "Hello world!";
 });
+
+
+require('./user/user_triggers.js');

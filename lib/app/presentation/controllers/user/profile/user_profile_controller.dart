@@ -80,7 +80,7 @@ class UserProfileController extends GetxController
         await _userProfileUseCase.update(userProfile);
       }
       SplashController splashController = Get.find();
-      splashController.updateUserProfile();
+      await splashController.updateUserProfile();
     } on UserProfileRepositoryException {
       _message.value = MessageModel(
         title: 'Erro em UserProfileController',

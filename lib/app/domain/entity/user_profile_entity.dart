@@ -107,15 +107,34 @@ class UserProfileEntity {
   Future<ParseObject> toParse() async {
     final profileParse = ParseObject('Profile');
     if (id != null) profileParse.objectId = id;
-    profileParse.set('fullName', fullName);
-    profileParse.set('nameTag', nameTag);
-    profileParse.set('description', description);
-    profileParse.set('isWoman', isWoman);
+    if (fullName != null) {
+      profileParse.set('fullName', fullName);
+    }
+
+    // if (fullName == null) {
+    //   profileParse.unset('fullName');
+    // } else {
+    //   profileParse.set('fullName', fullName);
+    // }
+    if (nameTag != null) {
+      profileParse.set('nameTag', nameTag);
+    }
+    if (description != null) {
+      profileParse.set('description', description);
+    }
+    if (isWoman != null) {
+      profileParse.set('isWoman', isWoman);
+    }
+    // profileParse.set('isWoman', isWoman ?? true);
     if (photoParseFileBase != null) {
       profileParse.set('photo', photoParseFileBase);
     }
-    profileParse.set('discord', discord);
-    profileParse.set('telegram', telegram);
+    if (discord != null) {
+      profileParse.set('discord', discord);
+    }
+    if (telegram != null) {
+      profileParse.set('telegram', telegram);
+    }
     return profileParse;
   }
 

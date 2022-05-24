@@ -45,7 +45,7 @@ class UserModel {
       id: map['id'] ?? '',
       email: map['email'] ?? '',
       phone: map['phone'] ?? '',
-      profile: UserProfileEntity.fromMap(map['profile']),
+      profile: UserProfileEntity?.fromMap(map['profile']),
     );
   }
 
@@ -59,7 +59,9 @@ class UserModel {
       id: parseUser.objectId!,
       email: parseUser.emailAddress!,
       phone: parseUser.username!,
-      profile: UserProfileEntity.fromParse(parseUser.get('profile')),
+      profile: parseUser.get('profile') != null
+          ? UserProfileEntity.fromParse(parseUser.get('profile'))
+          : null,
     );
   }
 
