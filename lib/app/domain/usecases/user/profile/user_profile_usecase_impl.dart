@@ -1,5 +1,5 @@
 import 'package:aluno/app/data/repository/user_profile_repository.dart';
-import 'package:aluno/app/domain/entity/user_profile_entity.dart';
+import 'package:aluno/app/domain/models/user_profile_model.dart';
 import 'package:aluno/app/domain/usecases/user/profile/user_profile_usecase.dart';
 
 class UserProfileUseCaseImpl implements UserProfileUseCase {
@@ -8,14 +8,14 @@ class UserProfileUseCaseImpl implements UserProfileUseCase {
       : _userProfileRepository = userProfileRepository;
 
   @override
-  Future<void> create(UserProfileEntity userProfileEntity) async {
-    print(userProfileEntity);
-    return await _userProfileRepository.create(userProfileEntity);
+  Future<String> create(UserProfileModel userProfileModel) async {
+    print(userProfileModel);
+    return await _userProfileRepository.create(userProfileModel);
   }
 
   @override
-  Future<void> update(UserProfileEntity userProfileEntity) async {
-    print(userProfileEntity);
-    await _userProfileRepository.update(userProfileEntity);
+  Future<String> update(UserProfileModel userProfileModel) async {
+    print(userProfileModel);
+    return await _userProfileRepository.update(userProfileModel);
   }
 }

@@ -1,7 +1,7 @@
 import 'dart:async';
 
 import 'package:aluno/app/data/repository/auth_repository.dart';
-import 'package:aluno/app/domain/entity/user_entity.dart';
+import 'package:aluno/app/domain/models/user_model.dart';
 import 'package:aluno/app/domain/usecases/auth/auth_usecase.dart';
 
 class AuthUseCaseImpl implements AuthUseCase {

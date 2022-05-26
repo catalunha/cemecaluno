@@ -1,4 +1,4 @@
-import 'package:aluno/app/domain/entity/user_entity.dart';
+import 'package:aluno/app/domain/models/user_model.dart';
 
 abstract class AuthUseCase {
   Future<UserModel?> registerEmail(

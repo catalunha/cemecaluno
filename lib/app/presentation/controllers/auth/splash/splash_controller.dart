@@ -1,6 +1,7 @@
 import 'package:aluno/app/data/datasource/back4app/init_back4app.dart';
-import 'package:aluno/app/domain/entity/user_entity.dart';
-import 'package:aluno/app/domain/entity/user_profile_entity.dart';
+import 'package:aluno/app/data/datasource/entity/user_profile_entity.dart';
+import 'package:aluno/app/domain/models/user_model.dart';
+import 'package:aluno/app/domain/models/user_profile_model.dart';
 import 'package:aluno/app/domain/usecases/auth/auth_usecase.dart';
 import 'package:aluno/app/routes.dart';
 import 'package:get/get.dart';
@@ -154,7 +155,7 @@ class SplashController extends GetxController {
     print(userModel);
   }
 
-  Future<UserProfileEntity?> getProfile() async {
+  Future<UserProfileModel?> getProfile() async {
     parseUser = await ParseUser.currentUser() as ParseUser;
 
     var profileField = parseUser!.get('profile');
@@ -162,11 +163,11 @@ class SplashController extends GetxController {
     print(profileField);
     var profileObj = ParseObject('Profile');
     var profileData = await profileObj.getObject(profileField.objectId);
-    UserProfileEntity? userProfileEntity;
+    UserProfileModel? userProfileEntity;
     if (profileData.success) {
       (profileData.result as ParseObject).get('fullName');
       userProfileEntity =
-          UserProfileEntity.fromParse(profileData.result as ParseObject);
+          UserProfileEntity().fromParse(profileData.result as ParseObject);
     } else {
       print('nao foi');
     }

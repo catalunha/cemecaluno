@@ -1,6 +1,8 @@
 import 'package:aluno/app/data/datasource/back4app/auth/auth_repository_exception.dart';
+import 'package:aluno/app/data/datasource/entity/user_entity.dart';
 import 'package:aluno/app/data/repository/auth_repository.dart';
-import 'package:aluno/app/domain/entity/user_entity.dart';
+// import 'package:aluno/app/data/datasource/entity/user_entity.dart';
+import 'package:aluno/app/domain/models/user_model.dart';
 import 'package:parse_server_sdk_flutter/parse_server_sdk.dart';
 
 class AuthRepositoryB4a implements AuthRepository {
@@ -17,7 +19,7 @@ class AuthRepositoryB4a implements AuthRepository {
       var response = await user.signUp();
       if (response.success) {
         print('register success');
-        UserModel userModel = UserModel.fromParse(response.results!.first);
+        UserModel userModel = UserEntity().fromParse(response.results!.first);
         return userModel;
       } else {
         print('register error');
@@ -39,7 +41,7 @@ class AuthRepositoryB4a implements AuthRepository {
 
       var response = await user.login();
       if (response.success) {
-        UserModel userModel = UserModel.fromParse(response.results!.first);
+        UserModel userModel = UserEntity().fromParse(response.results!.first);
         print(userModel);
         return userModel;
       } else {
