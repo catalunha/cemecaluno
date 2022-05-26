@@ -8,7 +8,7 @@ A new Flutter project.
 
 # deploy app web
 
-cd ~/myapp/cemec.net.br/aluno && flutter build web && cd back4app/cemec-aluno && b4a deploy
+cd ~/myapp/cemec.net.br/aluno && flutter build web && cd cloudcode/cemec-aluno && b4a deploy
 
 # deploy cloudCode
 cd ~/myapp/cemec.net.br/aluno/back4app/cemec-aluno && b4a deploy

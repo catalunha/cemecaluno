@@ -1,7 +1,7 @@
-class ProductRepositoryException implements Exception {
+class CourseRepositoryException implements Exception {
   final int code;
   final String message;
-  ProductRepositoryException({
+  CourseRepositoryException({
     required this.code,
     required this.message,
   });

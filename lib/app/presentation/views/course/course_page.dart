@@ -1,30 +1,30 @@
+import 'package:aluno/app/presentation/controllers/course/list/course_list_controller.dart';
+import 'package:aluno/app/presentation/views/course/list/part/component_info.dart';
 import 'package:aluno/app/presentation/views/utils/app_appbar.dart';
 import 'package:aluno/app/presentation/views/utils/app_launch.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
-class CoursePage extends StatefulWidget {
-  const CoursePage({Key? key}) : super(key: key);
+class CoursePage extends StatelessWidget {
+  final CourseListController _courseListController = Get.find();
 
-  @override
-  State<CoursePage> createState() => _CoursePageState();
-}
+  CoursePage({Key? key}) : super(key: key);
 
-class _CoursePageState extends State<CoursePage> {
-  var moduleChecked = false;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.blueGrey.shade50,
       appBar: AppAppbar(
-        title: const Text('cursoNome'),
-        actions: [
-          IconButton(
-              onPressed: () => AppLaunch.launch('https://discord.com'),
-              icon: const Icon(
-                Icons.discord,
-                size: 40,
-              ))
-        ],
+        title: Text(_courseListController.course!.name),
+        // actions: [
+        //   IconButton(
+        //       onPressed: () => AppLaunch.launch(
+        //           '${_courseListController.course!.community}'),
+        //       icon: const Icon(
+        //         Icons.discord,
+        //         size: 40,
+        //       ))
+        // ],
       ),
       body: Column(
         children: [
@@ -36,7 +36,8 @@ class _CoursePageState extends State<CoursePage> {
                 Column(
                   children: [
                     IconButton(
-                      onPressed: () => AppLaunch.launch('https://discord.com'),
+                      onPressed: () => AppLaunch.launch(
+                          '${_courseListController.course!.community}'),
                       icon: const Icon(
                         Icons.discord,
                         size: 40,
@@ -47,23 +48,33 @@ class _CoursePageState extends State<CoursePage> {
                 ),
                 Column(
                   children: [
-                    Image.network(
-                      'https://parsefiles.back4app.com/ZuF4FI4dZUN4i9ObIoK6LvTuoIuVFNsVAMRjYNkX/297bf3dcf5dc829d9e1933db26fd4cf6_izatar.jpg',
-                      width: 50,
-                      height: 50,
-                      fit: BoxFit.cover,
-                    ),
-                    const Text('Organizadora')
+                    _courseListController.course!.organizer.photo == null
+                        ? const Icon(Icons.person)
+                        : ClipRRect(
+                            borderRadius: BorderRadius.circular(50),
+                            child: Image.network(
+                              _courseListController.course!.organizer.photo!,
+                              width: 50,
+                              height: 50,
+                              fit: BoxFit.cover,
+                            ),
+                          ),
+                    const Text('Organizadora'),
                   ],
                 ),
                 Column(
                   children: [
-                    Image.network(
-                      'https://parsefiles.back4app.com/ZuF4FI4dZUN4i9ObIoK6LvTuoIuVFNsVAMRjYNkX/01fc68c2af7ade93ce5955afe9cabfbf_man1.png',
-                      width: 50,
-                      height: 50,
-                      fit: BoxFit.cover,
-                    ),
+                    _courseListController.course!.coordinator!.photo == null
+                        ? const Icon(Icons.person)
+                        : ClipRRect(
+                            borderRadius: BorderRadius.circular(50),
+                            child: Image.network(
+                              _courseListController.course!.coordinator!.photo!,
+                              width: 50,
+                              height: 50,
+                              fit: BoxFit.cover,
+                            ),
+                          ),
                     const Text('Coordenador')
                   ],
                 )
@@ -73,36 +84,39 @@ class _CoursePageState extends State<CoursePage> {
           Expanded(
             child: Wrap(
               children: [
-                modulo(
-                  name: 'modulo 1',
-                  aula: 'aula 1',
-                  imageCourse:
-                      'https://parsefiles.back4app.com/ZuF4FI4dZUN4i9ObIoK6LvTuoIuVFNsVAMRjYNkX/cdec4477b1e99e9b98fb45f8be00ac1b_ventosa.jpg',
-                  imageCoord:
-                      'https://parsefiles.back4app.com/ZuF4FI4dZUN4i9ObIoK6LvTuoIuVFNsVAMRjYNkX/01fc68c2af7ade93ce5955afe9cabfbf_man1.png',
-                  imageProf:
-                      'https://parsefiles.back4app.com/ZuF4FI4dZUN4i9ObIoK6LvTuoIuVFNsVAMRjYNkX/0b28345ecb39e2177d1746f80246ed70_woman2.png',
-                ),
-                modulo(
-                  name: 'modulo 1',
-                  aula: 'aula 2',
-                  imageCourse:
-                      'https://parsefiles.back4app.com/ZuF4FI4dZUN4i9ObIoK6LvTuoIuVFNsVAMRjYNkX/cdec4477b1e99e9b98fb45f8be00ac1b_ventosa.jpg',
-                  imageCoord:
-                      'https://parsefiles.back4app.com/ZuF4FI4dZUN4i9ObIoK6LvTuoIuVFNsVAMRjYNkX/425559a4c10df0add8d737d8bca4a347_woman1.png',
-                  imageProf:
-                      'https://parsefiles.back4app.com/ZuF4FI4dZUN4i9ObIoK6LvTuoIuVFNsVAMRjYNkX/4d25fa84c39f08ac1dc1af1f3ab4fe84_woman3.png',
-                ),
-                modulo(
-                  name: 'modulo 1',
-                  aula: 'aula 2',
-                  imageCourse:
-                      'https://parsefiles.back4app.com/ZuF4FI4dZUN4i9ObIoK6LvTuoIuVFNsVAMRjYNkX/cdec4477b1e99e9b98fb45f8be00ac1b_ventosa.jpg',
-                  imageCoord:
-                      'https://parsefiles.back4app.com/ZuF4FI4dZUN4i9ObIoK6LvTuoIuVFNsVAMRjYNkX/425559a4c10df0add8d737d8bca4a347_woman1.png',
-                  imageProf:
-                      'https://parsefiles.back4app.com/ZuF4FI4dZUN4i9ObIoK6LvTuoIuVFNsVAMRjYNkX/4d25fa84c39f08ac1dc1af1f3ab4fe84_woman3.png',
-                ),
+                ..._courseListController.course!.components!
+                    .map((component) => ComponentInfo(component: component))
+                    .toList(),
+                // modulo(
+                //   name: 'modulo 1',
+                //   aula: 'aula 1',
+                //   imageCourse:
+                //       'https://parsefiles.back4app.com/ZuF4FI4dZUN4i9ObIoK6LvTuoIuVFNsVAMRjYNkX/cdec4477b1e99e9b98fb45f8be00ac1b_ventosa.jpg',
+                //   imageCoord:
+                //       'https://parsefiles.back4app.com/ZuF4FI4dZUN4i9ObIoK6LvTuoIuVFNsVAMRjYNkX/01fc68c2af7ade93ce5955afe9cabfbf_man1.png',
+                //   imageProf:
+                //       'https://parsefiles.back4app.com/ZuF4FI4dZUN4i9ObIoK6LvTuoIuVFNsVAMRjYNkX/0b28345ecb39e2177d1746f80246ed70_woman2.png',
+                // ),
+                // modulo(
+                //   name: 'modulo 1',
+                //   aula: 'aula 2',
+                //   imageCourse:
+                //       'https://parsefiles.back4app.com/ZuF4FI4dZUN4i9ObIoK6LvTuoIuVFNsVAMRjYNkX/cdec4477b1e99e9b98fb45f8be00ac1b_ventosa.jpg',
+                //   imageCoord:
+                //       'https://parsefiles.back4app.com/ZuF4FI4dZUN4i9ObIoK6LvTuoIuVFNsVAMRjYNkX/425559a4c10df0add8d737d8bca4a347_woman1.png',
+                //   imageProf:
+                //       'https://parsefiles.back4app.com/ZuF4FI4dZUN4i9ObIoK6LvTuoIuVFNsVAMRjYNkX/4d25fa84c39f08ac1dc1af1f3ab4fe84_woman3.png',
+                // ),
+                // modulo(
+                //   name: 'modulo 1',
+                //   aula: 'aula 2',
+                //   imageCourse:
+                //       'https://parsefiles.back4app.com/ZuF4FI4dZUN4i9ObIoK6LvTuoIuVFNsVAMRjYNkX/cdec4477b1e99e9b98fb45f8be00ac1b_ventosa.jpg',
+                //   imageCoord:
+                //       'https://parsefiles.back4app.com/ZuF4FI4dZUN4i9ObIoK6LvTuoIuVFNsVAMRjYNkX/425559a4c10df0add8d737d8bca4a347_woman1.png',
+                //   imageProf:
+                //       'https://parsefiles.back4app.com/ZuF4FI4dZUN4i9ObIoK6LvTuoIuVFNsVAMRjYNkX/4d25fa84c39f08ac1dc1af1f3ab4fe84_woman3.png',
+                // ),
               ],
             ),
           ),
@@ -211,16 +225,16 @@ class _CoursePageState extends State<CoursePage> {
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                IconButton(
-                  onPressed: () {
-                    setState(() {
-                      moduleChecked = !moduleChecked;
-                    });
-                  },
-                  icon: Icon(moduleChecked
-                      ? Icons.check_box_outlined
-                      : Icons.check_box_outline_blank),
-                ),
+                // IconButton(
+                //   onPressed: () {
+                //     setState(() {
+                //       moduleChecked = !moduleChecked;
+                //     });
+                //   },
+                //   icon: Icon(moduleChecked
+                //       ? Icons.check_box_outlined
+                //       : Icons.check_box_outline_blank),
+                // ),
                 IconButton(
                   onPressed: () => AppLaunch.launch(
                       'https://drive.google.com/drive/folders/1ON1pBql5EvaPx1RXFH8SGm9Uy8VC4T76?usp=sharing'),

@@ -1,6 +1,7 @@
 import 'package:aluno/app/presentation/controllers/auth/email/auth_register_email_dependencies.dart';
 import 'package:aluno/app/presentation/controllers/auth/login/login_dependencies.dart';
 import 'package:aluno/app/presentation/controllers/auth/splash/splash_dependencies.dart';
+import 'package:aluno/app/presentation/controllers/course/list/course_list_dependencies.dart';
 import 'package:aluno/app/presentation/controllers/home/home_dependencies.dart';
 import 'package:aluno/app/presentation/controllers/user/profile/user_profile_dependencies.dart';
 import 'package:aluno/app/presentation/views/auth/login/auth_login_page.dart';
@@ -45,7 +46,7 @@ class Routes {
     ),
     GetPage(
       name: Routes.home,
-      binding: HomeDependencies(),
+      bindings: [HomeDependencies(), CourseListDependencies()],
       page: () => HomePage(),
     ),
     GetPage(
@@ -61,7 +62,7 @@ class Routes {
     GetPage(
       name: Routes.course,
       // binding: HomeDependencies(),
-      page: () => const CoursePage(),
+      page: () => CoursePage(),
     ),
     GetPage(
       name: Routes.userProfile,

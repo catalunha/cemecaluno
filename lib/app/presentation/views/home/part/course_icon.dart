@@ -6,7 +6,7 @@ class CourseIcon extends StatelessWidget {
     required this.imageCourse,
   }) : super(key: key);
 
-  final String imageCourse;
+  final String? imageCourse;
 
   @override
   Widget build(BuildContext context) {
@@ -17,12 +17,14 @@ class CourseIcon extends StatelessWidget {
         topLeft: Radius.circular(30),
         topRight: Radius.circular(0),
       ),
-      child: Image.network(
-        imageCourse,
-        width: 80,
-        height: 80,
-        fit: BoxFit.contain,
-      ),
+      child: imageCourse == null
+          ? const Icon(Icons.abc)
+          : Image.network(
+              imageCourse!,
+              width: 80,
+              height: 80,
+              fit: BoxFit.contain,
+            ),
     );
   }
 }

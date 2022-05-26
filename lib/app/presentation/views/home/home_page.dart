@@ -1,4 +1,5 @@
 import 'package:aluno/app/presentation/controllers/auth/splash/splash_controller.dart';
+import 'package:aluno/app/presentation/views/course/list/part/course_list.dart';
 import 'package:aluno/app/presentation/views/home/part/course_icon.dart';
 import 'package:aluno/app/presentation/views/home/part/course_sale.dart';
 import 'package:aluno/app/presentation/views/home/part/popmenu_user.dart';
@@ -41,57 +42,58 @@ class _HomePageState extends State<HomePage> {
         children: [
           Expanded(
             flex: 1,
-            child: Container(
-              color: Colors.black12,
-              width: double.infinity,
-              child: SingleChildScrollView(
-                controller: ScrollController(),
-                child: Wrap(
-                  alignment: WrapAlignment.center,
-                  children: [
-                    SizedBox(
-                      width: 200,
-                      child: cursoPago2(
-                        name: 'nomeCurso01',
-                        turma: '2022.3',
-                        imageCourse:
-                            'https://parsefiles.back4app.com/ZuF4FI4dZUN4i9ObIoK6LvTuoIuVFNsVAMRjYNkX/02f4d2918c8b90cce0578b4838c00cfd_auriculo.jpg',
-                        imageCoord:
-                            'https://parsefiles.back4app.com/ZuF4FI4dZUN4i9ObIoK6LvTuoIuVFNsVAMRjYNkX/01fc68c2af7ade93ce5955afe9cabfbf_man1.png',
-                        imageProf:
-                            'https://parsefiles.back4app.com/ZuF4FI4dZUN4i9ObIoK6LvTuoIuVFNsVAMRjYNkX/4d25fa84c39f08ac1dc1af1f3ab4fe84_woman3.png',
-                      ),
-                    ),
-                    SizedBox(
-                      width: 200,
-                      child: cursoPago2(
-                        name: 'nomeCurso02',
-                        turma: '2021.9',
-                        imageCourse:
-                            'https://parsefiles.back4app.com/ZuF4FI4dZUN4i9ObIoK6LvTuoIuVFNsVAMRjYNkX/cdec4477b1e99e9b98fb45f8be00ac1b_ventosa.jpg',
-                        imageCoord:
-                            'https://parsefiles.back4app.com/ZuF4FI4dZUN4i9ObIoK6LvTuoIuVFNsVAMRjYNkX/297bf3dcf5dc829d9e1933db26fd4cf6_izatar.jpg',
-                        imageProf:
-                            'https://parsefiles.back4app.com/ZuF4FI4dZUN4i9ObIoK6LvTuoIuVFNsVAMRjYNkX/be018b06eab0a32da738b15672979fc0_woman5.png',
-                      ),
-                    ),
-                    SizedBox(
-                      width: 200,
-                      child: cursoPago2(
-                        name: 'nomeCurso02',
-                        turma: '2021.9',
-                        imageCourse:
-                            'https://parsefiles.back4app.com/ZuF4FI4dZUN4i9ObIoK6LvTuoIuVFNsVAMRjYNkX/cdec4477b1e99e9b98fb45f8be00ac1b_ventosa.jpg',
-                        imageCoord:
-                            'https://parsefiles.back4app.com/ZuF4FI4dZUN4i9ObIoK6LvTuoIuVFNsVAMRjYNkX/297bf3dcf5dc829d9e1933db26fd4cf6_izatar.jpg',
-                        imageProf:
-                            'https://parsefiles.back4app.com/ZuF4FI4dZUN4i9ObIoK6LvTuoIuVFNsVAMRjYNkX/be018b06eab0a32da738b15672979fc0_woman5.png',
-                      ),
-                    )
-                  ],
-                ),
-              ),
-            ),
+            child: CourseList(),
+            // child: Container(
+            //   color: Colors.black12,
+            //   width: double.infinity,
+            //   child: SingleChildScrollView(
+            //     controller: ScrollController(),
+            //     child: Wrap(
+            //       alignment: WrapAlignment.center,
+            //       children: [
+            //         SizedBox(
+            //           width: 200,
+            //           child: cursoPago2(
+            //             name: 'nomeCurso01',
+            //             turma: '2022.3',
+            //             imageCourse:
+            //                 'https://parsefiles.back4app.com/ZuF4FI4dZUN4i9ObIoK6LvTuoIuVFNsVAMRjYNkX/02f4d2918c8b90cce0578b4838c00cfd_auriculo.jpg',
+            //             imageCoord:
+            //                 'https://parsefiles.back4app.com/ZuF4FI4dZUN4i9ObIoK6LvTuoIuVFNsVAMRjYNkX/01fc68c2af7ade93ce5955afe9cabfbf_man1.png',
+            //             imageProf:
+            //                 'https://parsefiles.back4app.com/ZuF4FI4dZUN4i9ObIoK6LvTuoIuVFNsVAMRjYNkX/4d25fa84c39f08ac1dc1af1f3ab4fe84_woman3.png',
+            //           ),
+            //         ),
+            //         // SizedBox(
+            //         //   width: 200,
+            //         //   child: cursoPago2(
+            //         //     name: 'nomeCurso02',
+            //         //     turma: '2021.9',
+            //         //     imageCourse:
+            //         //         'https://parsefiles.back4app.com/ZuF4FI4dZUN4i9ObIoK6LvTuoIuVFNsVAMRjYNkX/cdec4477b1e99e9b98fb45f8be00ac1b_ventosa.jpg',
+            //         //     imageCoord:
+            //         //         'https://parsefiles.back4app.com/ZuF4FI4dZUN4i9ObIoK6LvTuoIuVFNsVAMRjYNkX/297bf3dcf5dc829d9e1933db26fd4cf6_izatar.jpg',
+            //         //     imageProf:
+            //         //         'https://parsefiles.back4app.com/ZuF4FI4dZUN4i9ObIoK6LvTuoIuVFNsVAMRjYNkX/be018b06eab0a32da738b15672979fc0_woman5.png',
+            //         //   ),
+            //         // ),
+            //         // SizedBox(
+            //         //   width: 200,
+            //         //   child: cursoPago2(
+            //         //     name: 'nomeCurso02',
+            //         //     turma: '2021.9',
+            //         //     imageCourse:
+            //         //         'https://parsefiles.back4app.com/ZuF4FI4dZUN4i9ObIoK6LvTuoIuVFNsVAMRjYNkX/cdec4477b1e99e9b98fb45f8be00ac1b_ventosa.jpg',
+            //         //     imageCoord:
+            //         //         'https://parsefiles.back4app.com/ZuF4FI4dZUN4i9ObIoK6LvTuoIuVFNsVAMRjYNkX/297bf3dcf5dc829d9e1933db26fd4cf6_izatar.jpg',
+            //         //     imageProf:
+            //         //         'https://parsefiles.back4app.com/ZuF4FI4dZUN4i9ObIoK6LvTuoIuVFNsVAMRjYNkX/be018b06eab0a32da738b15672979fc0_woman5.png',
+            //         //   ),
+            //         // )
+            //       ],
+            //     ),
+            //   ),
+            // ),
           ),
           Expanded(
             flex: 2,
