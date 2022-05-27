@@ -1,5 +1,5 @@
 import 'package:aluno/app/presentation/controllers/auth/splash/splash_controller.dart';
-import 'package:aluno/app/presentation/views/course/list/part/course_list.dart';
+import 'package:aluno/app/presentation/views/course/paid/course_list.dart';
 import 'package:aluno/app/presentation/views/home/part/course_icon.dart';
 import 'package:aluno/app/presentation/views/home/part/course_sale.dart';
 import 'package:aluno/app/presentation/views/home/part/popmenu_user.dart';

@@ -1,5 +1,5 @@
 import 'package:aluno/app/domain/models/component_model.dart';
-import 'package:aluno/app/presentation/controllers/student/course/student_course_controller.dart';
+import 'package:aluno/app/presentation/controllers/course/student/student_course_controller.dart';
 import 'package:aluno/app/presentation/views/utils/app_launch.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
