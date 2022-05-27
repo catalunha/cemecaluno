@@ -29,6 +29,15 @@ class StudentCourseUseCaseImpl implements StudentCourseUseCase {
   Future<void> update(StudentCourseModel studentCourseModel) =>
       _studentCourseRepository.update(studentCourseModel);
 
+  @override
+  Future<void> updateComponentsCompleted(
+      {required String studentCourseId,
+      required String componentId,
+      required bool add}) async {
+    await _studentCourseRepository.updateComponentsCompleted(
+        studentCourseId: studentCourseId, componentId: componentId, add: add);
+  }
+
   // @override
   // Future<void> updateAddress(String productId, String addressId) =>
   //     _studentCourseRepository.updateAddress(productId, addressId);

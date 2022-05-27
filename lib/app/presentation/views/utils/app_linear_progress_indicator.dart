@@ -41,7 +41,7 @@ class AppLinearPercentIndicator extends StatelessWidget {
           child: Align(
               alignment: Alignment.center,
               child: Text(
-                '${percent * 100}%',
+                '${(percent * 100).toStringAsFixed(0)}%',
                 style: const TextStyle(color: Colors.black),
               )),
         ),

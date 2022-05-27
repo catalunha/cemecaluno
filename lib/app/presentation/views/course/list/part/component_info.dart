@@ -8,10 +8,16 @@ class ComponentInfo extends StatelessWidget {
   final StudentCourseController _studentCourseController = Get.find();
 
   final ComponentModel component;
+  final String studentCourseId;
+  final bool contentCompleted;
   final bool contentUnlocked;
-  ComponentInfo(
-      {Key? key, required this.component, this.contentUnlocked = false})
-      : super(key: key);
+  ComponentInfo({
+    Key? key,
+    required this.component,
+    this.contentUnlocked = false,
+    required this.studentCourseId,
+    required this.contentCompleted,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -132,16 +138,16 @@ class ComponentInfo extends StatelessWidget {
                       Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
-                          // IconButton(
-                          //   onPressed: () {
-                          //     setState(() {
-                          //       moduleChecked = !moduleChecked;
-                          //     });
-                          //   },
-                          //   icon: Icon(moduleChecked
-                          //       ? Icons.check_box_outlined
-                          //       : Icons.check_box_outline_blank),
-                          // ),
+                          IconButton(
+                            onPressed: () {
+                              _studentCourseController
+                                  .updateComponentsCompleted(studentCourseId,
+                                      component.id!, !contentCompleted);
+                            },
+                            icon: Icon(contentCompleted
+                                ? Icons.check_box_outlined
+                                : Icons.check_box_outline_blank),
+                          ),
                           IconButton(
                             onPressed: () => AppLaunch.launch(component.folder),
                             icon: const Icon(Icons.folder),

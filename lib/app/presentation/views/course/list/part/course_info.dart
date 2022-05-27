@@ -2,6 +2,7 @@ import 'package:aluno/app/domain/models/student_course_model.dart';
 import 'package:aluno/app/presentation/controllers/student/course/student_course_controller.dart';
 import 'package:aluno/app/presentation/views/home/part/course_icon.dart';
 import 'package:aluno/app/presentation/views/utils/app_launch.dart';
+import 'package:aluno/app/presentation/views/utils/app_linear_progress_indicator.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -29,7 +30,6 @@ class CourseInfo extends StatelessWidget {
               studentCourse.course.season,
               style: const TextStyle(fontWeight: FontWeight.bold),
             ),
-
             InkWell(
                 onTap: () {
                   // Get.toNamed(Routes.course);
@@ -100,7 +100,10 @@ class CourseInfo extends StatelessWidget {
                 // ),
               ],
             ),
-            // const AppLinearPercentIndicator(percent: 0.213),
+            AppLinearPercentIndicator(
+                percent:
+                    studentCourse.componentsCompletedIfNull.length.toDouble() /
+                        (studentCourse.course.components!.length.toDouble())),
           ],
         ),
       ),

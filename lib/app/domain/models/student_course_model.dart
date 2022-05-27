@@ -11,6 +11,9 @@ class StudentCourseModel {
   final CourseModel course;
   final List<String>? componentsIfPaid;
   final List<String>? componentsCompleted;
+  List<String> get componentsIfPaidIfNull => componentsIfPaid ?? [];
+  List<String> get componentsCompletedIfNull => componentsCompleted ?? [];
+
   StudentCourseModel({
     this.id,
     required this.user,

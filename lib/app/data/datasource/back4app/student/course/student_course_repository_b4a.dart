@@ -70,4 +70,20 @@ class StudentCourseRepositoryB4a extends GetxService
     var parseObject = ParseObject(StudentCourseEntity.className)..objectId = id;
     await parseObject.delete();
   }
+
+  @override
+  Future<void> updateComponentsCompleted(
+      {required String studentCourseId,
+      required String componentId,
+      required bool add}) async {
+    final studentCourseParseObject = ParseObject(StudentCourseEntity.className);
+    studentCourseParseObject.objectId = studentCourseId;
+    if (add) {
+      studentCourseParseObject.setAddUnique('componentsCompleted', componentId);
+    } else {
+      studentCourseParseObject.setRemove('componentsCompleted', componentId);
+    }
+
+    await studentCourseParseObject.save();
+  }
 }

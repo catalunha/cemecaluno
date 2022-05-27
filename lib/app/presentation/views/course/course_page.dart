@@ -2,20 +2,25 @@ import 'package:aluno/app/presentation/controllers/student/course/student_course
 import 'package:aluno/app/presentation/views/course/list/part/component_info.dart';
 import 'package:aluno/app/presentation/views/utils/app_appbar.dart';
 import 'package:aluno/app/presentation/views/utils/app_launch.dart';
+import 'package:aluno/app/presentation/views/utils/app_linear_progress_indicator.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 class CoursePage extends StatelessWidget {
   final StudentCourseController _studentCourseController = Get.find();
 
-  CoursePage({Key? key}) : super(key: key);
+  CoursePage({
+    Key? key,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    // final StudentCourseModel studentCourse = Get.arguments;
+
     return Scaffold(
       backgroundColor: Colors.blueGrey.shade50,
       appBar: AppAppbar(
-        title: Text(_studentCourseController.course!.name),
+        title: Text(_studentCourseController.studentCourse!.course.name),
         // actions: [
         //   IconButton(
         //       onPressed: () => AppLaunch.launch(
@@ -37,7 +42,7 @@ class CoursePage extends StatelessWidget {
                   children: [
                     IconButton(
                       onPressed: () => AppLaunch.launch(
-                          '${_studentCourseController.course!.community}'),
+                          '${_studentCourseController.studentCourse!.course.community}'),
                       icon: const Icon(
                         Icons.discord,
                         size: 40,
@@ -48,55 +53,69 @@ class CoursePage extends StatelessWidget {
                 ),
                 Column(
                   children: [
-                    _studentCourseController.course!.organizer.photo == null
-                        ? const Icon(Icons.person)
-                        : ClipRRect(
-                            borderRadius: BorderRadius.circular(50),
-                            child: Image.network(
-                              _studentCourseController.course!.organizer.photo!,
-                              width: 50,
-                              height: 50,
-                              fit: BoxFit.cover,
-                            ),
-                          ),
-                    const Text('Organizadora'),
-                  ],
-                ),
-                Column(
-                  children: [
-                    _studentCourseController.course!.coordinator!.photo == null
+                    _studentCourseController
+                                .studentCourse!.course.organizer.photo ==
+                            null
                         ? const Icon(Icons.person)
                         : ClipRRect(
                             borderRadius: BorderRadius.circular(50),
                             child: Image.network(
                               _studentCourseController
-                                  .course!.coordinator!.photo!,
+                                  .studentCourse!.course.organizer.photo!,
                               width: 50,
                               height: 50,
                               fit: BoxFit.cover,
                             ),
                           ),
-                    const Text('Coordenador')
+                    const Text('Organizador(a)'),
+                  ],
+                ),
+                Column(
+                  children: [
+                    _studentCourseController
+                                .studentCourse!.course.coordinator!.photo ==
+                            null
+                        ? const Icon(Icons.person)
+                        : ClipRRect(
+                            borderRadius: BorderRadius.circular(50),
+                            child: Image.network(
+                              _studentCourseController
+                                  .studentCourse!.course.coordinator!.photo!,
+                              width: 50,
+                              height: 50,
+                              fit: BoxFit.cover,
+                            ),
+                          ),
+                    const Text('Coordenador(a)')
                   ],
                 )
               ],
             ),
           ),
+          Obx(() => AppLinearPercentIndicator(
+              width: 200,
+              percent: _studentCourseController
+                      .studentCourse!.componentsCompletedIfNull.length
+                      .toDouble() /
+                  (_studentCourseController
+                      .studentCourse!.course.components!.length
+                      .toDouble()))),
           Expanded(
             child: Wrap(
               children: [
-                ..._studentCourseController.course!.components!
+                ..._studentCourseController.studentCourse!.course.components!
                     .map((component) {
-                  if (_studentCourseController.componentsIfPaidCurrent!
-                      .contains(component.id)) {
-                    print('contem: ${component.id}');
-                  }
-                  return ComponentInfo(
-                    component: component,
-                    contentUnlocked: _studentCourseController
-                        .componentsIfPaidCurrent!
-                        .contains(component.id),
-                  );
+                  return Obx(() => ComponentInfo(
+                        component: component,
+                        contentUnlocked: _studentCourseController
+                            .studentCourse!.componentsIfPaidIfNull
+                            .contains(component.id),
+                        studentCourseId:
+                            _studentCourseController.studentCourse!.id!,
+                        contentCompleted: _studentCourseController
+                            .studentCourse!.componentsCompletedIfNull
+                            .contains(component.id),
+                      ));
                 }).toList(),
                 // modulo(
                 //   name: 'modulo 1',

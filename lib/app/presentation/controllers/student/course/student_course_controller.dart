@@ -1,4 +1,3 @@
-import 'package:aluno/app/domain/models/course_model.dart';
 import 'package:aluno/app/domain/models/student_course_model.dart';
 import 'package:aluno/app/domain/usecases/student/course/student_course_usecase.dart';
 import 'package:aluno/app/presentation/controllers/utils/mixins/loader_mixin.dart';
@@ -18,9 +17,9 @@ class StudentCourseController extends GetxController
   final _studentCourseList = <StudentCourseModel>[].obs;
   List<StudentCourseModel> get studentCourseList => _studentCourseList.toList();
 
-  final _course = Rxn<CourseModel>();
-  CourseModel? get course => _course.value;
-  List<String>? componentsIfPaidCurrent;
+  final _studentCourse = Rxn<StudentCourseModel>();
+  StudentCourseModel? get studentCourse => _studentCourse.value;
+  // List<String>? componentsIfPaidCurrent;
   // final _pagination = Pagination().obs;
   // final _lastPage = false.obs;
   // get lastPage => _lastPage.value;
@@ -55,8 +54,8 @@ class StudentCourseController extends GetxController
   //     ));
   //   }
   // }
-  void list() {
-    _studentCourseUseCase.list(_studentCourseList);
+  Future<void> list() async {
+    await _studentCourseUseCase.list(_studentCourseList);
   }
   // Future<void> findAll() async {
   //   final products = await _productRepository.findAll();
@@ -78,12 +77,27 @@ class StudentCourseController extends GetxController
   //   Get.toNamed(Routes.productAppend, arguments: null);
   // }
 
+  void updateComponentsCompleted(
+      String studentCourseId, String componentId, bool add) async {
+    _loading.toggle();
+    await _studentCourseUseCase.updateComponentsCompleted(
+        studentCourseId: studentCourseId, componentId: componentId, add: add);
+    await list();
+    var studentCourseTemp = studentCourseList
+        .firstWhere((element) => element.id == studentCourseId);
+    _studentCourse(studentCourseTemp);
+    _studentCourse.update((val) {
+      val = studentCourseTemp;
+    });
+    _loading.toggle();
+  }
+
   void courseCurrent(String id) {
     print('courseCurrent: $id');
     var studentCourseTemp =
         studentCourseList.firstWhere((element) => element.id == id);
-    _course(studentCourseTemp.course);
-    componentsIfPaidCurrent = studentCourseTemp.componentsIfPaid;
+    _studentCourse(studentCourseTemp);
+    // componentsIfPaidCurrent = studentCourseTemp.componentsIfPaid;
     Get.toNamed(Routes.course);
   }
 }

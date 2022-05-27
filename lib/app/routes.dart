@@ -65,7 +65,7 @@ class Routes {
     ),
     GetPage(
       name: Routes.course,
-      // binding: HomeDependencies(),
+      bindings: [StudentCourseDependencies()],
       page: () => CoursePage(),
     ),
     GetPage(

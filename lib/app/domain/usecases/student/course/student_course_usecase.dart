@@ -6,4 +6,9 @@ abstract class StudentCourseUseCase {
   Future<void> create(StudentCourseModel studentCourseModel);
   Future<void> update(StudentCourseModel studentCourseModel);
   Future<void> delete(String id);
+  Future<void> updateComponentsCompleted({
+    required String studentCourseId,
+    required String componentId,
+    required bool add,
+  });
 }
