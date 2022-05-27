@@ -3,8 +3,6 @@ import 'dart:convert';
 import 'package:aluno/app/domain/models/user_profile_model.dart';
 
 class UserModel {
-  static const String className = '_User';
-
   final String id;
   final String email;
   final String phone;

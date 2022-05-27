@@ -1,10 +1,10 @@
-import 'package:aluno/app/presentation/controllers/course/list/course_list_controller.dart';
+import 'package:aluno/app/presentation/controllers/student/course/student_course_controller.dart';
 import 'package:aluno/app/presentation/views/course/list/part/course_info.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 class CourseList extends StatelessWidget {
-  final CourseListController _courseListController = Get.find();
+  final StudentCourseController _studentCourseController = Get.find();
   // final List<CourseModel> courseList;
   // final Function() nextPage;
   // final bool lastPage;
@@ -21,8 +21,8 @@ class CourseList extends StatelessWidget {
       () => SingleChildScrollView(
         controller: ScrollController(),
         child: Wrap(
-          children: _courseListController.courseList
-              .map((course) => CourseInfo(course: course))
+          children: _studentCourseController.studentCourseList
+              .map((studentCourse) => CourseInfo(studentCourse: studentCourse))
               .toList(),
         ),
       ),

@@ -5,8 +5,6 @@ import 'package:aluno/app/domain/models/user_profile_model.dart';
 import 'package:flutter/foundation.dart';
 
 class CourseModel {
-  // static const String className = 'Course';
-
   final String? id;
   final String name;
   final String season;

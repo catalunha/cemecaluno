@@ -1,4 +1,4 @@
-import 'package:aluno/app/presentation/controllers/course/list/course_list_controller.dart';
+import 'package:aluno/app/presentation/controllers/student/course/student_course_controller.dart';
 import 'package:aluno/app/presentation/views/course/list/part/component_info.dart';
 import 'package:aluno/app/presentation/views/utils/app_appbar.dart';
 import 'package:aluno/app/presentation/views/utils/app_launch.dart';
@@ -6,7 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 class CoursePage extends StatelessWidget {
-  final CourseListController _courseListController = Get.find();
+  final StudentCourseController _studentCourseController = Get.find();
 
   CoursePage({Key? key}) : super(key: key);
 
@@ -15,11 +15,11 @@ class CoursePage extends StatelessWidget {
     return Scaffold(
       backgroundColor: Colors.blueGrey.shade50,
       appBar: AppAppbar(
-        title: Text(_courseListController.course!.name),
+        title: Text(_studentCourseController.course!.name),
         // actions: [
         //   IconButton(
         //       onPressed: () => AppLaunch.launch(
-        //           '${_courseListController.course!.community}'),
+        //           '${_studentCourseController.course!.community}'),
         //       icon: const Icon(
         //         Icons.discord,
         //         size: 40,
@@ -37,7 +37,7 @@ class CoursePage extends StatelessWidget {
                   children: [
                     IconButton(
                       onPressed: () => AppLaunch.launch(
-                          '${_courseListController.course!.community}'),
+                          '${_studentCourseController.course!.community}'),
                       icon: const Icon(
                         Icons.discord,
                         size: 40,
@@ -48,12 +48,12 @@ class CoursePage extends StatelessWidget {
                 ),
                 Column(
                   children: [
-                    _courseListController.course!.organizer.photo == null
+                    _studentCourseController.course!.organizer.photo == null
                         ? const Icon(Icons.person)
                         : ClipRRect(
                             borderRadius: BorderRadius.circular(50),
                             child: Image.network(
-                              _courseListController.course!.organizer.photo!,
+                              _studentCourseController.course!.organizer.photo!,
                               width: 50,
                               height: 50,
                               fit: BoxFit.cover,
@@ -64,12 +64,13 @@ class CoursePage extends StatelessWidget {
                 ),
                 Column(
                   children: [
-                    _courseListController.course!.coordinator!.photo == null
+                    _studentCourseController.course!.coordinator!.photo == null
                         ? const Icon(Icons.person)
                         : ClipRRect(
                             borderRadius: BorderRadius.circular(50),
                             child: Image.network(
-                              _courseListController.course!.coordinator!.photo!,
+                              _studentCourseController
+                                  .course!.coordinator!.photo!,
                               width: 50,
                               height: 50,
                               fit: BoxFit.cover,
@@ -84,9 +85,19 @@ class CoursePage extends StatelessWidget {
           Expanded(
             child: Wrap(
               children: [
-                ..._courseListController.course!.components!
-                    .map((component) => ComponentInfo(component: component))
-                    .toList(),
+                ..._studentCourseController.course!.components!
+                    .map((component) {
+                  if (_studentCourseController.componentsIfPaidCurrent!
+                      .contains(component.id)) {
+                    print('contem: ${component.id}');
+                  }
+                  return ComponentInfo(
+                    component: component,
+                    contentUnlocked: _studentCourseController
+                        .componentsIfPaidCurrent!
+                        .contains(component.id),
+                  );
+                }).toList(),
                 // modulo(
                 //   name: 'modulo 1',
                 //   aula: 'aula 1',

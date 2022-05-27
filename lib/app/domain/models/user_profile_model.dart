@@ -1,10 +1,6 @@
 import 'dart:convert';
 
-import 'package:parse_server_sdk_flutter/parse_server_sdk.dart';
-
 class UserProfileModel {
-  static const String className = 'Profile';
-
   final String? id;
   final String? fullName;
   final String? nameTag;
@@ -13,8 +9,11 @@ class UserProfileModel {
   final String? photo;
   final String? discord;
   final String? telegram;
-  //campo temp para gerenciar
-  ParseFileBase? photoParseFileBase;
+
+  String get nameTagIfNull => nameTag ?? 'Não informado.';
+  String get photoIfNull =>
+      photo ??
+      'https://parsefiles.back4app.com/ZuF4FI4dZUN4i9ObIoK6LvTuoIuVFNsVAMRjYNkX/fbeae4ba125a7417f7decb33570a6d3c_barcode.png';
 
   UserProfileModel({
     this.id,

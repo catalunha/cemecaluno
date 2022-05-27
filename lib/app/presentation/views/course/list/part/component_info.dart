@@ -1,14 +1,17 @@
 import 'package:aluno/app/domain/models/component_model.dart';
-import 'package:aluno/app/presentation/controllers/course/list/course_list_controller.dart';
+import 'package:aluno/app/presentation/controllers/student/course/student_course_controller.dart';
 import 'package:aluno/app/presentation/views/utils/app_launch.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 class ComponentInfo extends StatelessWidget {
-  final CourseListController _courseListController = Get.find();
+  final StudentCourseController _studentCourseController = Get.find();
 
   final ComponentModel component;
-  ComponentInfo({Key? key, required this.component}) : super(key: key);
+  final bool contentUnlocked;
+  ComponentInfo(
+      {Key? key, required this.component, this.contentUnlocked = false})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -48,6 +51,10 @@ class ComponentInfo extends StatelessWidget {
                     // mainAxisAlignment: MainAxisAlignment.center,
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
+                      Text(
+                        component.id!,
+                        style: const TextStyle(fontWeight: FontWeight.bold),
+                      ),
                       Text(
                         component.module,
                         style: const TextStyle(fontWeight: FontWeight.bold),
@@ -118,30 +125,36 @@ class ComponentInfo extends StatelessWidget {
                 )
               ],
             ),
-            const Divider(),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                // IconButton(
-                //   onPressed: () {
-                //     setState(() {
-                //       moduleChecked = !moduleChecked;
-                //     });
-                //   },
-                //   icon: Icon(moduleChecked
-                //       ? Icons.check_box_outlined
-                //       : Icons.check_box_outline_blank),
-                // ),
-                IconButton(
-                  onPressed: () => AppLaunch.launch(component.folder),
-                  icon: const Icon(Icons.folder),
-                ),
-                IconButton(
-                  onPressed: () => AppLaunch.launch(component.video),
-                  icon: const Icon(Icons.ondemand_video),
-                )
-              ],
-            )
+            contentUnlocked
+                ? Column(
+                    children: [
+                      const Divider(),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          // IconButton(
+                          //   onPressed: () {
+                          //     setState(() {
+                          //       moduleChecked = !moduleChecked;
+                          //     });
+                          //   },
+                          //   icon: Icon(moduleChecked
+                          //       ? Icons.check_box_outlined
+                          //       : Icons.check_box_outline_blank),
+                          // ),
+                          IconButton(
+                            onPressed: () => AppLaunch.launch(component.folder),
+                            icon: const Icon(Icons.folder),
+                          ),
+                          IconButton(
+                            onPressed: () => AppLaunch.launch(component.video),
+                            icon: const Icon(Icons.ondemand_video),
+                          )
+                        ],
+                      ),
+                    ],
+                  )
+                : const SizedBox(),
           ],
         ),
       ),

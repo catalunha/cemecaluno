@@ -5,6 +5,8 @@ import 'package:parse_server_sdk_flutter/parse_server_sdk.dart';
 import 'package:aluno/app/data/datasource/entity/user_profile_entity.dart';
 
 class ComponentEntity {
+  static const String className = 'Component';
+
   Future<ComponentModel> fromParse(ParseObject parseObject) async {
     //+++ get allTeachers
     final List<UserProfileModel> teachers = [];
@@ -39,7 +41,7 @@ class ComponentEntity {
   //     : parseObject.get('photo') as ParseFile;
 
   Future<ParseObject> toParse(ComponentModel componentModel) async {
-    final component = ParseObject('Component');
+    final component = ParseObject(ComponentEntity.className);
     if (componentModel.id != null) component.objectId = componentModel.id;
 
     component.set('module', componentModel.module);

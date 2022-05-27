@@ -2,6 +2,8 @@ import 'package:aluno/app/domain/models/user_profile_model.dart';
 import 'package:parse_server_sdk_flutter/parse_server_sdk.dart';
 
 class UserProfileEntity {
+  static const String className = 'Profile';
+
   UserProfileModel fromParse(ParseObject parseObject) {
     UserProfileModel userProfileEntity = UserProfileModel(
       id: parseObject.objectId!,
@@ -24,7 +26,7 @@ class UserProfileEntity {
   }
 
   Future<ParseObject> toParse(UserProfileModel userProfileModel) async {
-    final profileParse = ParseObject('Profile');
+    final profileParse = ParseObject(UserProfileEntity.className);
     if (userProfileModel.id != null) {
       profileParse.objectId = userProfileModel.id;
     }
@@ -46,9 +48,9 @@ class UserProfileEntity {
     if (userProfileModel.isWoman != null) {
       profileParse.set('isWoman', userProfileModel.isWoman);
     }
-    if (userProfileModel.photoParseFileBase != null) {
-      profileParse.set('photo', userProfileModel.photoParseFileBase);
-    }
+    // if (userProfileModel.photoParseFileBase != null) {
+    //   profileParse.set('photo', userProfileModel.photoParseFileBase);
+    // }
     if (userProfileModel.discord != null) {
       profileParse.set('discord', userProfileModel.discord);
     }

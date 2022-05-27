@@ -5,8 +5,6 @@ import 'package:flutter/foundation.dart';
 import 'package:parse_server_sdk_flutter/parse_server_sdk.dart';
 
 class ComponentModel {
-  // static const String className = 'Component';
-
   final String? id;
   final String module;
   final String name;

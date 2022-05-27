@@ -7,6 +7,8 @@ import 'package:parse_server_sdk_flutter/parse_server_sdk.dart';
 import 'package:aluno/app/data/datasource/entity/user_profile_entity.dart';
 
 class CourseEntity {
+  static const String className = 'Course';
+
   Future<CourseModel> fromParse(ParseObject parseObject) async {
     //+++ get queryTeachers
     final List<UserProfileModel> teachers = [];
@@ -60,7 +62,7 @@ class CourseEntity {
   //     : parseObject.get('photo') as ParseFile;
 
   Future<ParseObject> toParse(CourseModel courseModel) async {
-    final course = ParseObject('Course');
+    final course = ParseObject(CourseEntity.className);
     if (courseModel.id != null) course.objectId = courseModel.id;
 
     course.set('name', courseModel.name);
