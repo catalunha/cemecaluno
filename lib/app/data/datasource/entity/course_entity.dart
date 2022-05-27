@@ -35,6 +35,8 @@ class CourseEntity {
       }
     }
     //--- get queryComponents
+    print('CourseEntity');
+    print(parseObject.objectId!);
     CourseModel courseModel = CourseModel(
       id: parseObject.objectId!,
       name: parseObject.get('name'),

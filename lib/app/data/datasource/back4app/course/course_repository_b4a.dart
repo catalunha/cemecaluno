@@ -25,7 +25,7 @@ class CourseRepositoryB4a extends GetxService implements CourseRepository {
     // ]);
     // queryProduct.selectKeys('name', 'Ana');
     // queryCourse.orderByAscending('name');
-    queryCourse.includeObject(['organizer', 'coordinator']);
+    queryCourse.includeObject(['coordinator', 'organizer']);
     return queryCourse;
   }
 
@@ -39,6 +39,7 @@ class CourseRepositoryB4a extends GetxService implements CourseRepository {
       // print(apiResponse.results);
       // List<CourseModel> courseList = [];
       for (var element in courseResponse.results!) {
+        print('resultsss');
         list.add(await CourseEntity().fromParse(element as ParseObject));
       }
     } else {
