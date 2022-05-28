@@ -7,10 +7,12 @@ class UserProfileModel {
   final String? description;
   final bool? isWoman;
   final String? photo;
+  final String? phone;
   final String? discord;
   final String? telegram;
 
   String get nameTagIfNull => nameTag ?? 'Não informado.';
+  String get phoneIfNull => phone ?? '00000000000';
   String get photoIfNull =>
       photo ??
       'https://parsefiles.back4app.com/ZuF4FI4dZUN4i9ObIoK6LvTuoIuVFNsVAMRjYNkX/fbeae4ba125a7417f7decb33570a6d3c_barcode.png';
@@ -22,6 +24,7 @@ class UserProfileModel {
     this.description,
     this.isWoman,
     this.photo,
+    this.phone,
     this.discord,
     this.telegram,
   });
@@ -33,6 +36,7 @@ class UserProfileModel {
     String? description,
     bool? isWoman,
     String? photo,
+    String? phone,
     String? discord,
     String? telegram,
   }) {
@@ -43,6 +47,7 @@ class UserProfileModel {
       description: description ?? this.description,
       isWoman: isWoman ?? this.isWoman,
       photo: photo ?? this.photo,
+      phone: phone ?? this.phone,
       discord: discord ?? this.discord,
       telegram: telegram ?? this.telegram,
     );
@@ -56,6 +61,7 @@ class UserProfileModel {
       'description': description,
       'isWoman': isWoman,
       'photo': photo,
+      'phone': phone,
       'discord': discord,
       'telegram': telegram,
     };
@@ -69,6 +75,7 @@ class UserProfileModel {
       description: map['description'],
       isWoman: map['isWoman'],
       photo: map['photo'],
+      phone: map['phone'],
       discord: map['discord'],
       telegram: map['telegram'],
     );
@@ -95,6 +102,7 @@ class UserProfileModel {
         other.description == description &&
         other.isWoman == isWoman &&
         other.photo == photo &&
+        other.phone == phone &&
         other.discord == discord &&
         other.telegram == telegram;
   }
@@ -107,6 +115,7 @@ class UserProfileModel {
         description.hashCode ^
         isWoman.hashCode ^
         photo.hashCode ^
+        phone.hashCode ^
         discord.hashCode ^
         telegram.hashCode;
   }

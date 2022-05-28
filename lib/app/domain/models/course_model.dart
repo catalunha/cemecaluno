@@ -19,6 +19,9 @@ class CourseModel {
   final List<UserProfileModel>? teachers;
   final List<ComponentModel>? components;
   final List<String>? componentsOrder;
+  String get imageIfNull =>
+      image ??
+      'https://parsefiles.back4app.com/ZuF4FI4dZUN4i9ObIoK6LvTuoIuVFNsVAMRjYNkX/f389e44898e39009c150036849858916_oops.png';
 
   CourseModel({
     this.id,

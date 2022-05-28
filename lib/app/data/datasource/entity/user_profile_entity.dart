@@ -11,6 +11,7 @@ class UserProfileEntity {
       nameTag: parseObject.get('nameTag'),
       description: parseObject.get('description'),
       isWoman: parseObject.get('isWoman'),
+      phone: parseObject.get('phone'),
       photo: parseObject.get('photo')?.get('url'),
 
       // photo: parseObject.get('photo') != null
@@ -44,6 +45,9 @@ class UserProfileEntity {
     }
     if (userProfileModel.description != null) {
       profileParse.set('description', userProfileModel.description);
+    }
+    if (userProfileModel.phone != null) {
+      profileParse.set('phone', userProfileModel.phone);
     }
     if (userProfileModel.isWoman != null) {
       profileParse.set('isWoman', userProfileModel.isWoman);

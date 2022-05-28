@@ -1,23 +1,20 @@
-import 'package:aluno/app/presentation/views/home/part/coord_profile.dart';
 import 'package:aluno/app/presentation/views/home/part/course_icon.dart';
-import 'package:aluno/app/presentation/views/home/part/organizer_profile.dart';
-import 'package:aluno/app/presentation/views/home/part/profs_profile.dart';
 import 'package:flutter/material.dart';
 
 class CourseSale extends StatelessWidget {
   final String imageCourse;
   final String name;
   final String turma;
-  final String imageCoord;
-  final String imageProf;
+  final Widget organizer;
+  final List<Widget> team;
 
   const CourseSale({
     Key? key,
     required this.imageCourse,
     required this.name,
     required this.turma,
-    required this.imageCoord,
-    required this.imageProf,
+    required this.organizer,
+    required this.team,
   }) : super(key: key);
 
   @override
@@ -43,11 +40,6 @@ class CourseSale extends StatelessWidget {
                 turma,
                 style: const TextStyle(fontWeight: FontWeight.bold),
               ),
-              const Text(
-                'Incrições até: 10-06-2022 as 23:59',
-                style:
-                    TextStyle(fontWeight: FontWeight.bold, color: Colors.red),
-              ),
               const SizedBox(
                 height: 5,
               ),
@@ -60,10 +52,7 @@ class CourseSale extends StatelessWidget {
                       Row(
                         mainAxisSize: MainAxisSize.max,
                         mainAxisAlignment: MainAxisAlignment.start,
-                        children: [
-                          CoordProfile(imageCoord: imageCoord),
-                          ProfsProfile(imageProf: imageProf)
-                        ],
+                        children: [...team],
                       ),
                     ],
                   ),
@@ -71,9 +60,9 @@ class CourseSale extends StatelessWidget {
                     mainAxisSize: MainAxisSize.min,
                     mainAxisAlignment: MainAxisAlignment.start,
                     crossAxisAlignment: CrossAxisAlignment.start,
-                    children: const [
-                      Text('Dúvidas:'),
-                      OrganizerProfile(),
+                    children: [
+                      const Text('Dúvidas:'),
+                      organizer,
                     ],
                   ),
                 ],

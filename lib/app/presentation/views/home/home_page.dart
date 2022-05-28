@@ -1,5 +1,5 @@
 import 'package:aluno/app/presentation/controllers/auth/splash/splash_controller.dart';
-import 'package:aluno/app/presentation/views/home/part/course_sale.dart';
+import 'package:aluno/app/presentation/views/home/course/offer/course_offer_list.dart';
 import 'package:aluno/app/presentation/views/home/part/popmenu_user.dart';
 import 'package:aluno/app/presentation/views/student/course/paid/course_list.dart';
 import 'package:flutter/material.dart';
@@ -63,52 +63,53 @@ class _HomePageState extends State<HomePage> {
                     ),
                   ),
                   Expanded(
-                    child: SingleChildScrollView(
-                      controller: ScrollController(),
-                      child: Wrap(
-                        children: [
-                          SizedBox(
-                            width: 350,
-                            child: cursoOferta(
-                              name: 'nomeCurso03',
-                              turma: '2022.1',
-                              imageCourse:
-                                  'https://parsefiles.back4app.com/ZuF4FI4dZUN4i9ObIoK6LvTuoIuVFNsVAMRjYNkX/cdec4477b1e99e9b98fb45f8be00ac1b_ventosa.jpg',
-                              imageCoord:
-                                  'https://parsefiles.back4app.com/ZuF4FI4dZUN4i9ObIoK6LvTuoIuVFNsVAMRjYNkX/01fc68c2af7ade93ce5955afe9cabfbf_man1.png',
-                              imageProf:
-                                  'https://parsefiles.back4app.com/ZuF4FI4dZUN4i9ObIoK6LvTuoIuVFNsVAMRjYNkX/01fc68c2af7ade93ce5955afe9cabfbf_man1.png',
-                            ),
-                          ),
-                          SizedBox(
-                            width: 350,
-                            child: cursoOferta(
-                              name: 'nomeCurso04',
-                              turma: '2021.7',
-                              imageCourse:
-                                  'https://parsefiles.back4app.com/ZuF4FI4dZUN4i9ObIoK6LvTuoIuVFNsVAMRjYNkX/02f4d2918c8b90cce0578b4838c00cfd_auriculo.jpg',
-                              imageCoord:
-                                  'https://parsefiles.back4app.com/ZuF4FI4dZUN4i9ObIoK6LvTuoIuVFNsVAMRjYNkX/01fc68c2af7ade93ce5955afe9cabfbf_man1.png',
-                              imageProf:
-                                  'https://parsefiles.back4app.com/ZuF4FI4dZUN4i9ObIoK6LvTuoIuVFNsVAMRjYNkX/01fc68c2af7ade93ce5955afe9cabfbf_man1.png',
-                            ),
-                          ),
-                          SizedBox(
-                            width: 350,
-                            child: cursoOferta(
-                              name: 'nomeCurso04',
-                              turma: '2021.7',
-                              imageCourse:
-                                  'https://parsefiles.back4app.com/ZuF4FI4dZUN4i9ObIoK6LvTuoIuVFNsVAMRjYNkX/02f4d2918c8b90cce0578b4838c00cfd_auriculo.jpg',
-                              imageCoord:
-                                  'https://parsefiles.back4app.com/ZuF4FI4dZUN4i9ObIoK6LvTuoIuVFNsVAMRjYNkX/01fc68c2af7ade93ce5955afe9cabfbf_man1.png',
-                              imageProf:
-                                  'https://parsefiles.back4app.com/ZuF4FI4dZUN4i9ObIoK6LvTuoIuVFNsVAMRjYNkX/01fc68c2af7ade93ce5955afe9cabfbf_man1.png',
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
+                    child: CourseOfferList(),
+                    // child: SingleChildScrollView(
+                    //   controller: ScrollController(),
+                    //   child: Wrap(
+                    //     children: [
+                    //       SizedBox(
+                    //         width: 350,
+                    //         child: cursoOferta(
+                    //           name: 'nomeCurso03',
+                    //           turma: '2022.1',
+                    //           imageCourse:
+                    //               'https://parsefiles.back4app.com/ZuF4FI4dZUN4i9ObIoK6LvTuoIuVFNsVAMRjYNkX/cdec4477b1e99e9b98fb45f8be00ac1b_ventosa.jpg',
+                    //           imageCoord:
+                    //               'https://parsefiles.back4app.com/ZuF4FI4dZUN4i9ObIoK6LvTuoIuVFNsVAMRjYNkX/01fc68c2af7ade93ce5955afe9cabfbf_man1.png',
+                    //           imageProf:
+                    //               'https://parsefiles.back4app.com/ZuF4FI4dZUN4i9ObIoK6LvTuoIuVFNsVAMRjYNkX/01fc68c2af7ade93ce5955afe9cabfbf_man1.png',
+                    //         ),
+                    //       ),
+                    //       SizedBox(
+                    //         width: 350,
+                    //         child: cursoOferta(
+                    //           name: 'nomeCurso04',
+                    //           turma: '2021.7',
+                    //           imageCourse:
+                    //               'https://parsefiles.back4app.com/ZuF4FI4dZUN4i9ObIoK6LvTuoIuVFNsVAMRjYNkX/02f4d2918c8b90cce0578b4838c00cfd_auriculo.jpg',
+                    //           imageCoord:
+                    //               'https://parsefiles.back4app.com/ZuF4FI4dZUN4i9ObIoK6LvTuoIuVFNsVAMRjYNkX/01fc68c2af7ade93ce5955afe9cabfbf_man1.png',
+                    //           imageProf:
+                    //               'https://parsefiles.back4app.com/ZuF4FI4dZUN4i9ObIoK6LvTuoIuVFNsVAMRjYNkX/01fc68c2af7ade93ce5955afe9cabfbf_man1.png',
+                    //         ),
+                    //       ),
+                    //       SizedBox(
+                    //         width: 350,
+                    //         child: cursoOferta(
+                    //           name: 'nomeCurso04',
+                    //           turma: '2021.7',
+                    //           imageCourse:
+                    //               'https://parsefiles.back4app.com/ZuF4FI4dZUN4i9ObIoK6LvTuoIuVFNsVAMRjYNkX/02f4d2918c8b90cce0578b4838c00cfd_auriculo.jpg',
+                    //           imageCoord:
+                    //               'https://parsefiles.back4app.com/ZuF4FI4dZUN4i9ObIoK6LvTuoIuVFNsVAMRjYNkX/01fc68c2af7ade93ce5955afe9cabfbf_man1.png',
+                    //           imageProf:
+                    //               'https://parsefiles.back4app.com/ZuF4FI4dZUN4i9ObIoK6LvTuoIuVFNsVAMRjYNkX/01fc68c2af7ade93ce5955afe9cabfbf_man1.png',
+                    //         ),
+                    //       ),
+                    //     ],
+                    //   ),
+                    // ),
                   ),
                 ],
               ),
@@ -168,69 +169,69 @@ class _HomePageState extends State<HomePage> {
         ));
   }
 
-  Card cursoOferta({
-    required String name,
-    required String turma,
-    required String imageCourse,
-    required String imageCoord,
-    required String imageProf,
-  }) {
-    return Card(
-      child: Column(
-        // mainAxisSize: MainAxisSize.min,
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          CourseSale(
-            imageCourse: imageCourse,
-            imageCoord: imageCoord,
-            imageProf: imageProf,
-            name: name,
-            turma: turma,
-          ),
-          Column(
-            children: [
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Container(
-                    height: 25,
-                    color: Colors.green,
-                    padding: const EdgeInsets.all(5),
-                    child: const Text(
-                      'INVESTIMENTO NO CURSO R\$ 100,00',
-                      style: TextStyle(fontWeight: FontWeight.bold),
-                    ),
-                  )
-                ],
-              ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: [
-                  // const Text('Modalidades de pagamento:'),
-                  InkWell(
-                    onTap: () {
-                      Get.toNamed(Routes.purchaseCart, arguments: 'pix');
-                    },
-                    child: const Icon(Icons.pix),
-                  ),
-                  InkWell(
-                    onTap: () {
-                      Get.toNamed(Routes.purchaseCart, arguments: 'bankslip');
-                    },
-                    child: const Icon(Icons.sticky_note_2),
-                  ),
-                  InkWell(
-                    onTap: () {
-                      Get.toNamed(Routes.purchaseCart, arguments: 'card');
-                    },
-                    child: const Icon(Icons.credit_card),
-                  ),
-                ],
-              ),
-            ],
-          ),
-        ],
-      ),
-    );
-  }
+  // Card cursoOferta({
+  //   required String name,
+  //   required String turma,
+  //   required String imageCourse,
+  //   required String imageCoord,
+  //   required String imageProf,
+  // }) {
+  //   return Card(
+  //     child: Column(
+  //       // mainAxisSize: MainAxisSize.min,
+  //       crossAxisAlignment: CrossAxisAlignment.start,
+  //       children: [
+  //         CourseSale(
+  //           imageCourse: imageCourse,
+  //           imageCoord: imageCoord,
+  //           imageProf: imageProf,
+  //           name: name,
+  //           turma: turma,
+  //         ),
+  //         Column(
+  //           children: [
+  //             Row(
+  //               mainAxisAlignment: MainAxisAlignment.center,
+  //               children: [
+  //                 Container(
+  //                   height: 25,
+  //                   color: Colors.green,
+  //                   padding: const EdgeInsets.all(5),
+  //                   child: const Text(
+  //                     'INVESTIMENTO NO CURSO R\$ 100,00',
+  //                     style: TextStyle(fontWeight: FontWeight.bold),
+  //                   ),
+  //                 )
+  //               ],
+  //             ),
+  //             Row(
+  //               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+  //               children: [
+  //                 // const Text('Modalidades de pagamento:'),
+  //                 InkWell(
+  //                   onTap: () {
+  //                     Get.toNamed(Routes.purchaseCart, arguments: 'pix');
+  //                   },
+  //                   child: const Icon(Icons.pix),
+  //                 ),
+  //                 InkWell(
+  //                   onTap: () {
+  //                     Get.toNamed(Routes.purchaseCart, arguments: 'bankslip');
+  //                   },
+  //                   child: const Icon(Icons.sticky_note_2),
+  //                 ),
+  //                 InkWell(
+  //                   onTap: () {
+  //                     Get.toNamed(Routes.purchaseCart, arguments: 'card');
+  //                   },
+  //                   child: const Icon(Icons.credit_card),
+  //                 ),
+  //               ],
+  //             ),
+  //           ],
+  //         ),
+  //       ],
+  //     ),
+  //   );
+  // }
 }

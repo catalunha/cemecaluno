@@ -26,7 +26,7 @@ class CourseOfferRepositoryB4a extends GetxService
     // ]);
     // queryProduct.selectKeys('name', 'Ana');
     query.orderByAscending('order');
-    query.includeObject(['course']);
+    query.includeObject(['course', 'course.coordinator', 'course.organizer']);
     return query;
   }
 

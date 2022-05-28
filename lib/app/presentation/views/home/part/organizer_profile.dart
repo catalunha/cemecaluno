@@ -1,9 +1,18 @@
+import 'package:aluno/app/domain/models/user_profile_model.dart';
 import 'package:aluno/app/presentation/views/utils/app_launch.dart';
 import 'package:flutter/material.dart';
 
-class OrganizerProfile extends StatelessWidget {
-  const OrganizerProfile({
+class Organizer extends StatelessWidget {
+  final UserProfileModel userProfileModel;
+  final String program;
+  final String user;
+  final String course;
+  const Organizer({
     Key? key,
+    required this.userProfileModel,
+    required this.program,
+    required this.user,
+    required this.course,
   }) : super(key: key);
 
   @override
@@ -13,10 +22,10 @@ class OrganizerProfile extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.start,
       children: [
         Tooltip(
-          message: 'Izaira. Organizadora',
+          message: '${userProfileModel.nameTagIfNull}. Organizadora',
           child: ClipOval(
             child: Image.network(
-              'https://parsefiles.back4app.com/ZuF4FI4dZUN4i9ObIoK6LvTuoIuVFNsVAMRjYNkX/297bf3dcf5dc829d9e1933db26fd4cf6_izatar.jpg',
+              userProfileModel.photoIfNull,
               width: 50,
               height: 50,
               fit: BoxFit.cover,
@@ -26,14 +35,14 @@ class OrganizerProfile extends StatelessWidget {
         Column(
           children: [
             InkWell(
-              onTap: () => AppLaunch.launch('https://cemec.net.br'),
+              onTap: () => AppLaunch.launch(program),
               child: const Icon(Icons.web),
             ),
             InkWell(
               onTap: () => AppLaunch.launchWhatsApp(
-                  phone: '5533988053701',
+                  phone: userProfileModel.phoneIfNull,
                   message:
-                      'Sou a Izáira. Posso ajudar-lhe sobre algum curso do CEMEC ?'),
+                      'Usuária(o) do CEMEC-aluno: $user. Duvidas sobre o curso de $course.'),
               child: const Icon(Icons.whatsapp),
             )
           ],
