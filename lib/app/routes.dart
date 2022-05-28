@@ -1,15 +1,15 @@
 import 'package:aluno/app/presentation/controllers/auth/email/auth_register_email_dependencies.dart';
 import 'package:aluno/app/presentation/controllers/auth/login/login_dependencies.dart';
 import 'package:aluno/app/presentation/controllers/auth/splash/splash_dependencies.dart';
-import 'package:aluno/app/presentation/controllers/course/student/student_course_dependencies.dart';
 import 'package:aluno/app/presentation/controllers/home/home_dependencies.dart';
+import 'package:aluno/app/presentation/controllers/student/course/student_course_dependencies.dart';
 import 'package:aluno/app/presentation/controllers/user/profile/user_profile_dependencies.dart';
 import 'package:aluno/app/presentation/views/auth/login/auth_login_page.dart';
 import 'package:aluno/app/presentation/views/auth/register/email/auth_register_email.page.dart';
 import 'package:aluno/app/presentation/views/auth/splash/splash_page.dart';
 import 'package:aluno/app/presentation/views/home/home_page.dart';
 import 'package:aluno/app/presentation/views/student/cart/purchase_cart.dart';
-import 'package:aluno/app/presentation/views/student/course/course_page.dart';
+import 'package:aluno/app/presentation/views/student/course/list/course_page.dart';
 import 'package:aluno/app/presentation/views/student/order/purchase_order.dart';
 import 'package:aluno/app/presentation/views/user/profile/user_profile_page.dart';
 import 'package:get/get.dart';
