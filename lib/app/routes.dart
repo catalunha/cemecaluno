@@ -7,10 +7,10 @@ import 'package:aluno/app/presentation/controllers/user/profile/user_profile_dep
 import 'package:aluno/app/presentation/views/auth/login/auth_login_page.dart';
 import 'package:aluno/app/presentation/views/auth/register/email/auth_register_email.page.dart';
 import 'package:aluno/app/presentation/views/auth/splash/splash_page.dart';
-import 'package:aluno/app/presentation/views/course/student/course_page.dart';
 import 'package:aluno/app/presentation/views/home/home_page.dart';
-import 'package:aluno/app/presentation/views/purchase/cart/purchase_cart.dart';
-import 'package:aluno/app/presentation/views/purchase/order/purchase_order.dart';
+import 'package:aluno/app/presentation/views/student/cart/purchase_cart.dart';
+import 'package:aluno/app/presentation/views/student/course/course_page.dart';
+import 'package:aluno/app/presentation/views/student/order/purchase_order.dart';
 import 'package:aluno/app/presentation/views/user/profile/user_profile_page.dart';
 import 'package:get/get.dart';
 

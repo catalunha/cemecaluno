@@ -1,5 +1,5 @@
 import 'package:aluno/app/presentation/controllers/course/student/student_course_controller.dart';
-import 'package:aluno/app/presentation/views/course/student/component_info.dart';
+import 'package:aluno/app/presentation/views/student/course/component_info.dart';
 import 'package:aluno/app/presentation/views/utils/app_appbar.dart';
 import 'package:aluno/app/presentation/views/utils/app_launch.dart';
 import 'package:aluno/app/presentation/views/utils/app_linear_progress_indicator.dart';
