@@ -1,5 +1,4 @@
 import 'package:aluno/app/presentation/views/utils/app_appbar.dart';
-import 'package:aluno/app/presentation/views/utils/app_clipboard_helper.dart';
 import 'package:aluno/app/presentation/views/utils/app_launch.dart';
 import 'package:aluno/app/presentation/views/utils/app_number_formfield.dart';
 import 'package:aluno/app/presentation/views/utils/app_textformfield.dart';
@@ -24,8 +23,16 @@ class _PurchaseCartState extends State<PurchaseCart> {
   final _codeCardTEC = TextEditingController();
   final pixOption = [0, 1];
   var pixOptionIndex = 0;
-  final items = ['A vista', '4x de R\$ 25.00'];
+  final items = [
+    'A vista',
+    // '1ª Parcela de R\$ 25.00 \n 2ª Parcela R\$ 25.00\n 3ª Parcela R\$ 25.00\n 4ª Parcela R\$ 25.00'
+    'aaa',
+    'aaa',
+    'aaa',
+  ];
   String? item;
+  String? pix;
+  var opcoes = <String, List<String>>{};
   @override
   void initState() {
     // TODO: implement initState
@@ -37,6 +44,14 @@ class _PurchaseCartState extends State<PurchaseCart> {
     _codeCardTEC.text = "";
     item = items[0];
     print(widget.tipoPay);
+
+    opcoes['pix1'] = ['PIX a Vista'];
+    opcoes['pix2'] = [
+      'PIX 1ª parcela',
+      'PIX 2ª parcela',
+      'PIX 3ª parcela',
+      'PIX 4ª parcela'
+    ];
   }
 
   @override
@@ -243,65 +258,166 @@ class _PurchaseCartState extends State<PurchaseCart> {
               ),
             ),
             const Text('Opções de pagamento com PIX'),
-            DropdownButton<String>(
-              value: item,
-              icon: const Icon(Icons.arrow_downward),
-              elevation: 16,
-              style: const TextStyle(color: Colors.deepPurple),
-              underline: Container(
-                height: 2,
-                color: Colors.deepPurpleAccent,
-              ),
-              onChanged: (value) {
-                setState(() {
-                  item = value!;
-                });
-              },
-              items: items.map<DropdownMenuItem<String>>((String value) {
-                return DropdownMenuItem<String>(
-                  value: value,
-                  child: Text(value),
-                );
-              }).toList(),
-            ),
+
+            Column(
+                children: opcoes.keys.map((key) {
+              return Row(
+                children: [
+                  Radio<String>(
+                    value: key,
+                    groupValue: pix,
+                    onChanged: (value) {
+                      setState(() {
+                        print(value);
+                        pix = key;
+                      });
+                    },
+                  ),
+                  Column(
+                    children: opcoes[key]!.map((e) => Text(e)).toList(),
+                  )
+                ],
+              );
+            }).toList()
+
+                //  <Widget>[
+                //   Row(
+                //     children: [
+                //       Radio<String>(
+                //         value: 'pix1',
+                //         groupValue: pix,
+                //         onChanged: (value) {
+                //           setState(() {
+                //             print(value);
+                //             pix = 'pix1';
+                //           });
+                //         },
+                //       ),
+                //       Column(
+                //         children: opcoes['pix1']!.map((e) => Text(e)).toList(),
+                //       )
+                //     ],
+                //   ),
+                //                 ],
+                ),
+
+            // ListTile(
+            //   title: const Text('Lafayette'),
+            //   leading: Radio<String>(
+            //     value: 'pix1',
+            //     groupValue: pix,
+            //     onChanged: (value) {
+            //       setState(() {
+            //         print(value);
+            //         pix = 'pix1';
+            //       });
+            //     },
+            //   ),
+            // ),
+            // ListTile(
+            //   title: const Text('Thomas Jefferson'),
+            //   leading: Radio<String>(
+            //     value: 'pix2',
+            //     groupValue: pix,
+            //     onChanged: (value) {
+            //       setState(() {
+            //         print(value);
+            //         pix = 'pix2';
+            //       });
+            //     },
+            //   ),
+            // ),
+
+            // Column(
+            //   children: <Widget>[
+            //     ListTile(
+            //       title: const Text('Lafayette'),
+            //       leading: Radio<String>(
+            //         value: 'pix1',
+            //         groupValue: pix,
+            //         onChanged: (value) {
+            //           setState(() {
+            //             print(value);
+            //             pix = 'pix1';
+            //           });
+            //         },
+            //       ),
+            //     ),
+            //     ListTile(
+            //       title: const Text('Thomas Jefferson'),
+            //       leading: Radio<String>(
+            //         value: 'pix2',
+            //         groupValue: pix,
+            //         onChanged: (value) {
+            //           setState(() {
+            //             print(value);
+            //             pix = 'pix2';
+            //           });
+            //         },
+            //       ),
+            //     ),
+            //   ],
+            // ),
+
+            // DropdownButton<String>(
+            //   value: item,
+            //   icon: const Icon(Icons.arrow_downward),
+            //   elevation: 16,
+            //   style: const TextStyle(color: Colors.deepPurple),
+            //   underline: Container(
+            //     height: 2,
+            //     color: Colors.deepPurpleAccent,
+            //   ),
+            //   onChanged: (value) {
+            //     setState(() {
+            //       item = value!;
+            //     });
+            //   },
+            //   items: items.map<DropdownMenuItem<String>>((String value) {
+            //     return DropdownMenuItem<String>(
+            //       value: value,
+            //       child: Text(value),
+            //     );
+            //   }).toList(),
+            // ),
             ElevatedButton(
               onPressed: () {},
-              child: const Text('Gerar QRCode.'),
+              child: const Text('Incluir no carrinho.'),
             ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: const [
-                Text('Segue dados para pagamento com PIX'),
-              ],
-            ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              // crossAxisAlignment: CrossAxisAlignment.center,
-              children: [
-                Image.network(
-                  'https://parsefiles.back4app.com/ZuF4FI4dZUN4i9ObIoK6LvTuoIuVFNsVAMRjYNkX/dbe7664facb9318f5dd93b8db7c45a7b_qrcode.png',
-                  width: 75,
-                  height: 75,
-                  fit: BoxFit.cover,
-                ),
-                Column(
-                  children: [
-                    const Text('Pix Copia e Cola'),
-                    InkWell(
-                        onTap: () {
-                          AppClipboardHelper.copy('codigo do pix');
-                          Get.snackbar(
-                            'PIX copiado',
-                            'Cole no aplicativo de seu banco',
-                            backgroundColor: Colors.yellowAccent,
-                            margin: const EdgeInsets.all(10),
-                          );
-                        },
-                        child: const Text('Click aqui')),
-                  ],
-                )
-              ],
-            ),
+            // Row(
+            //   mainAxisAlignment: MainAxisAlignment.center,
+            //   children: const [
+            //     Text('Segue dados para pagamento com PIX'),
+            //   ],
+            // ),
+            // Row(
+            //   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            //   // crossAxisAlignment: CrossAxisAlignment.center,
+            //   children: [
+            //     Image.network(
+            //       'https://parsefiles.back4app.com/ZuF4FI4dZUN4i9ObIoK6LvTuoIuVFNsVAMRjYNkX/dbe7664facb9318f5dd93b8db7c45a7b_qrcode.png',
+            //       width: 75,
+            //       height: 75,
+            //       fit: BoxFit.cover,
+            //     ),
+            //     Column(
+            //       children: [
+            //         const Text('Pix Copia e Cola'),
+            //         InkWell(
+            //             onTap: () {
+            //               AppClipboardHelper.copy('codigo do pix');
+            //               Get.snackbar(
+            //                 'PIX copiado',
+            //                 'Cole no aplicativo de seu banco',
+            //                 backgroundColor: Colors.yellowAccent,
+            //                 margin: const EdgeInsets.all(10),
+            //               );
+            //             },
+            //             child: const Text('Click aqui')),
+            //       ],
+            //     )
+            //   ],
+            // ),
           ],
         ),
       ),

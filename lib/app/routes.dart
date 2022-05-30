@@ -1,6 +1,7 @@
 import 'package:aluno/app/presentation/controllers/auth/email/auth_register_email_dependencies.dart';
 import 'package:aluno/app/presentation/controllers/auth/login/login_dependencies.dart';
 import 'package:aluno/app/presentation/controllers/auth/splash/splash_dependencies.dart';
+import 'package:aluno/app/presentation/controllers/course/payment/course_payment_dependencies.dart';
 import 'package:aluno/app/presentation/controllers/home/course/offer/course_offer_dependencies.dart';
 import 'package:aluno/app/presentation/controllers/home/home_dependencies.dart';
 import 'package:aluno/app/presentation/controllers/student/course/student_course_dependencies.dart';
@@ -8,6 +9,7 @@ import 'package:aluno/app/presentation/controllers/user/profile/user_profile_dep
 import 'package:aluno/app/presentation/views/auth/login/auth_login_page.dart';
 import 'package:aluno/app/presentation/views/auth/register/email/auth_register_email.page.dart';
 import 'package:aluno/app/presentation/views/auth/splash/splash_page.dart';
+import 'package:aluno/app/presentation/views/course/payment/pix/course_payment_pix_page.dart';
 import 'package:aluno/app/presentation/views/home/home_page.dart';
 import 'package:aluno/app/presentation/views/student/cart/purchase_cart.dart';
 import 'package:aluno/app/presentation/views/student/course/current/course_page.dart';
@@ -28,6 +30,8 @@ class Routes {
   static const purchaseOrder = '/purchase/order';
 
   static const course = '/course';
+
+  static const coursePaymentPix = '/course/payment/pix';
 
   static final pageList = [
     GetPage(
@@ -68,6 +72,11 @@ class Routes {
       name: Routes.course,
       bindings: [StudentCourseDependencies()],
       page: () => CoursePage(),
+    ),
+    GetPage(
+      name: Routes.coursePaymentPix,
+      binding: CoursePaymentDependencies(),
+      page: () => CoursePaymentPixPage(),
     ),
     GetPage(
       name: Routes.userProfile,

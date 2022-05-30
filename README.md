@@ -6,6 +6,9 @@ A new Flutter project.
 
  flutter create --project-name=aluno --org br.net.cemec --platforms android,web,linux -a kotlin ./aluno
 
+ flutter create --project-name=numbersandcalc --org org.brintec --platforms android,web ./numbersandcalc
+
+
 # deploy app web
 
 cd ~/myapp/cemec.net.br/aluno && flutter build web && cd cloudcode/cemec-aluno && b4a deploy

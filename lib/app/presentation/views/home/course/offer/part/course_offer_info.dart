@@ -1,5 +1,6 @@
 import 'package:aluno/app/domain/models/course_offer_model.dart';
 import 'package:aluno/app/presentation/controllers/auth/splash/splash_controller.dart';
+import 'package:aluno/app/presentation/controllers/home/course/offer/course_offer_controller.dart';
 import 'package:aluno/app/presentation/views/home/course/offer/part/course_sale.dart';
 import 'package:aluno/app/presentation/views/home/part/icon_name_function_profile.dart';
 import 'package:aluno/app/presentation/views/home/part/organizer_profile.dart';
@@ -8,7 +9,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 class CourseOfferInfo extends StatelessWidget {
-  // final CourseOfferController _courseOfferController = Get.find();
+  final CourseOfferController _courseOfferController = Get.find();
   final SplashController _splashController = Get.find();
   final CourseOfferModel courseOffer;
   CourseOfferInfo({Key? key, required this.courseOffer}) : super(key: key);
@@ -78,8 +79,10 @@ class CourseOfferInfo extends StatelessWidget {
                     courseOffer.payWith!.contains('pix')
                         ? InkWell(
                             onTap: () {
-                              Get.toNamed(Routes.purchaseCart,
-                                  arguments: 'pix');
+                              // Get.toNamed(Routes.purchaseCart,
+                              //     arguments: 'pix');
+                              _courseOfferController.setPayment(
+                                  courseOffer.id!, 'pix');
                             },
                             child: const Icon(Icons.pix),
                           )

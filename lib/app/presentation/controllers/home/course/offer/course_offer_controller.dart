@@ -19,6 +19,7 @@ class CourseOfferController extends GetxController
 
   final _courseOffer = Rxn<CourseOfferModel>();
   CourseOfferModel? get courseOffer => _courseOffer.value;
+  String payWithSelected = '';
   // List<String>? componentsIfPaidCurrent;
   // final _pagination = Pagination().obs;
   // final _lastPage = false.obs;
@@ -91,6 +92,18 @@ class CourseOfferController extends GetxController
   //   });
   //   _loading.toggle();
   // }
+
+  void setPayment(String courseOfferId, String payWith) {
+    print('courseOfferCurrent: $courseOfferId');
+    var courseOfferTemp =
+        courseOfferList.firstWhere((element) => element.id == courseOfferId);
+    _courseOffer(courseOfferTemp);
+    // componentsIfPaidCurrent = studentCourseTemp.componentsIfPaid;
+    payWithSelected = payWith;
+    if (payWith == 'pix') {
+      Get.toNamed(Routes.coursePaymentPix);
+    }
+  }
 
   void courseCurrent(String id) {
     print('courseOfferCurrent: $id');
