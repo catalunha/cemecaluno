@@ -146,7 +146,9 @@ class _HomePageState extends State<HomePage> {
 
   IconButton appBarActionCart() {
     return IconButton(
-      onPressed: () {},
+      onPressed: () {
+        Get.toNamed(Routes.studentCart);
+      },
       icon: const Icon(
         Icons.shopping_cart_rounded,
         color: Colors.red,

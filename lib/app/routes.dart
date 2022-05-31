@@ -4,6 +4,7 @@ import 'package:aluno/app/presentation/controllers/auth/splash/splash_dependenci
 import 'package:aluno/app/presentation/controllers/course/payment/course_payment_dependencies.dart';
 import 'package:aluno/app/presentation/controllers/home/course/offer/course_offer_dependencies.dart';
 import 'package:aluno/app/presentation/controllers/home/home_dependencies.dart';
+import 'package:aluno/app/presentation/controllers/student/cart/student_cart_dependencies.dart';
 import 'package:aluno/app/presentation/controllers/student/course/student_course_dependencies.dart';
 import 'package:aluno/app/presentation/controllers/user/profile/user_profile_dependencies.dart';
 import 'package:aluno/app/presentation/views/auth/login/auth_login_page.dart';
@@ -11,7 +12,7 @@ import 'package:aluno/app/presentation/views/auth/register/email/auth_register_e
 import 'package:aluno/app/presentation/views/auth/splash/splash_page.dart';
 import 'package:aluno/app/presentation/views/course/payment/pix/course_payment_pix_page.dart';
 import 'package:aluno/app/presentation/views/home/home_page.dart';
-import 'package:aluno/app/presentation/views/student/cart/purchase_cart.dart';
+import 'package:aluno/app/presentation/views/student/cart/studant_cart_list.dart';
 import 'package:aluno/app/presentation/views/student/course/current/course_page.dart';
 import 'package:aluno/app/presentation/views/student/order/purchase_order.dart';
 import 'package:aluno/app/presentation/views/user/profile/user_profile_page.dart';
@@ -32,6 +33,7 @@ class Routes {
   static const course = '/course';
 
   static const coursePaymentPix = '/course/payment/pix';
+  static const studentCart = '/student/cart';
 
   static final pageList = [
     GetPage(
@@ -59,11 +61,6 @@ class Routes {
       page: () => HomePage(),
     ),
     GetPage(
-      name: Routes.purchaseCart,
-      // binding: HomeDependencies(),
-      page: () => PurchaseCart(),
-    ),
-    GetPage(
       name: Routes.purchaseOrder,
       // binding: HomeDependencies(),
       page: () => const PurchaseOrder(),
@@ -82,6 +79,11 @@ class Routes {
       name: Routes.userProfile,
       binding: UserProfileDependencies(),
       page: () => UserProfilePage(),
+    ),
+    GetPage(
+      name: Routes.studentCart,
+      binding: StudentCartDependencies(),
+      page: () => StudentCartList(),
     ),
   ];
 }

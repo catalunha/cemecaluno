@@ -25,7 +25,7 @@ class StudentCourseEntity {
     if (studentCourseModel.id != null) {
       studentCourseParseObject.objectId = studentCourseModel.id;
     }
-    studentCourseParseObject.set('student', (ParseUser.currentUser()));
+    studentCourseParseObject.set('student', (await ParseUser.currentUser()));
     studentCourseParseObject.set('course',
         (ParseObject('course')..objectId = studentCourseModel.course.id));
     if (studentCourseModel.componentsIfPaid == null) {

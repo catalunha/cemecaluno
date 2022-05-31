@@ -115,10 +115,15 @@ class _CoursePaymentPixPageState extends State<CoursePaymentPixPage> {
                   ).toList(),
                 ),
               ),
-              ElevatedButton(
-                onPressed: () {},
-                child: const Text('Incluir no carrinho.'),
-              ),
+              paymentMode != null
+                  ? ElevatedButton(
+                      onPressed: () {
+                        widget._coursePaymentController
+                            .createStudentCart(paymentMode!);
+                      },
+                      child: const Text('Incluir no carrinho.'),
+                    )
+                  : const SizedBox(),
             ],
           )),
         ),

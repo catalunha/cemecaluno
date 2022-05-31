@@ -1,5 +1,7 @@
 import 'package:aluno/app/domain/models/course_payment_model.dart';
+import 'package:aluno/app/domain/models/student_cart_model.dart';
 import 'package:aluno/app/domain/usecases/course/payment/course_payment_usecase.dart';
+import 'package:aluno/app/domain/usecases/student/cart/student_cart_usecase.dart';
 import 'package:aluno/app/presentation/controllers/home/course/offer/course_offer_controller.dart';
 import 'package:aluno/app/presentation/controllers/utils/mixins/loader_mixin.dart';
 import 'package:aluno/app/presentation/controllers/utils/mixins/message_mixin.dart';
@@ -9,8 +11,12 @@ import 'package:intl/intl.dart';
 class CoursePaymentController extends GetxController
     with LoaderMixin, MessageMixin {
   final CoursePaymentUseCase _coursePaymentUseCase;
-  CoursePaymentController({required CoursePaymentUseCase coursePaymentUseCase})
-      : _coursePaymentUseCase = coursePaymentUseCase;
+  final StudentCartUseCase _studentCartUseCase;
+  CoursePaymentController(
+      {required CoursePaymentUseCase coursePaymentUseCase,
+      required StudentCartUseCase studentCartUseCase})
+      : _coursePaymentUseCase = coursePaymentUseCase,
+        _studentCartUseCase = studentCartUseCase;
 
   final _loading = false.obs;
   final _message = Rxn<MessageModel>();
@@ -58,5 +64,20 @@ class CoursePaymentController extends GetxController
       }
     }
     _loading.toggle();
+  }
+
+  void createStudentCart(String paymentMode) async {
+    _loading.toggle();
+    for (var element in coursePaymentList) {
+      if (element.paymentMode == paymentMode) {
+        StudentCartModel studentCartModel = StudentCartModel(
+          coursePayment: element,
+          generatedCob: false,
+        );
+        await _studentCartUseCase.create(studentCartModel);
+      }
+    }
+    _loading.toggle();
+    Get.back();
   }
 }
