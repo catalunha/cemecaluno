@@ -22,12 +22,17 @@ class StudentCartController extends GetxController
   // final _pagination = Pagination().obs;
   // final _lastPage = false.obs;
   // get lastPage => _lastPage.value;
+  @override
+  void onReady() {
+    // TODO: implement onReady
+    super.onReady();
+    list();
+  }
 
   @override
   void onInit() {
     // ever(_pagination, (_) => subscribe());
     // _changePagination(1, 10);
-    list();
     loaderListener(_loading);
     messageListener(_message);
     super.onInit();
@@ -54,7 +59,9 @@ class StudentCartController extends GetxController
   //   }
   // }
   Future<void> list() async {
+    _loading.toggle();
     await _studentCartUseCase.list(_studentCartList);
+    _loading.toggle();
   }
   // Future<void> findAll() async {
   //   final products = await _productRepository.findAll();

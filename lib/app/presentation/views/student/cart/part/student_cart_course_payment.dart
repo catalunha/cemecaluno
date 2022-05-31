@@ -1,19 +1,19 @@
 import 'package:aluno/app/domain/models/course_payment_model.dart';
 import 'package:aluno/app/presentation/controllers/auth/splash/splash_controller.dart';
-import 'package:aluno/app/presentation/controllers/home/course/offer/course_offer_controller.dart';
 import 'package:aluno/app/presentation/views/home/course/offer/part/course_sale.dart';
 import 'package:aluno/app/presentation/views/home/part/icon_name_function_profile.dart';
 import 'package:aluno/app/presentation/views/home/part/organizer_profile.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:intl/intl.dart';
 
 class StudentCartCoursePayment extends StatelessWidget {
-  final CourseOfferController _courseOfferController = Get.find();
   final SplashController _splashController = Get.find();
   final CoursePaymentModel coursePayment;
   StudentCartCoursePayment({Key? key, required this.coursePayment})
       : super(key: key);
 
+  final dateFormat = DateFormat('dd/MM/yyyy HH:mm');
   @override
   Widget build(BuildContext context) {
     return SizedBox(
@@ -50,7 +50,12 @@ class StudentCartCoursePayment extends StatelessWidget {
               name: coursePayment.course.name,
               turma: coursePayment.course.season,
             ),
-            Text('${coursePayment.id}'),
+            const Divider(),
+            const Center(child: Text('Etapa de investimento neste curso')),
+            Center(child: Text('Código do item: ${coursePayment.id}')),
+            Text(coursePayment.paymentDescription),
+            Text('Custo R\$${coursePayment.cost}'),
+            Text('Vencimento: ${dateFormat.format(coursePayment.payDate)}'),
           ],
         ),
       ),
